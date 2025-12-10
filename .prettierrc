@@ -3,8 +3,8 @@
 	"trailingComma": "es5",
 	"bracketSpacing": true,
 	"arrowParens": "always",
-	"singleQuote": true,
+	"singleQuote": false,
 	"printWidth": 100,
-	"tabWidth": 3,
-	"useTabs": true
+	"tabWidth": 4,
+	"useTabs": false
 }

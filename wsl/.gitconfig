@@ -1,14 +1,15 @@
 # Identité
 [user]
-	name = "First Name, Last Name"
-	email = "email@example.com"
+	name = "{{FULLNAME}}"
+	email = "{{EMAIL}}"
 
 # Core
 [core]
-   excludesfile = ~/.gitignore
+   	excludesfile = ~/.gitignore
 	autocrlf = input
-   conflictstyle = zdiff3
+   	conflictstyle = zdiff3
 	sshCommand = ssh -i ~/.ssh/id_rsa
+	editor = \"C:\\Users\\{{USER}}\\AppData\\Local\\Programs\\Microsoft VS Code\\bin\\code\" --wait
 
 # Initialisation des repos
 [init]
@@ -29,14 +30,8 @@
    mnemonicPrefix = true
    renames = true
 	tool = vscode
-[difftool "vscode"]
-	path = PathTo/Microsoft VS Code/Code.exe
-	cmd = \"PathTo/Microsoft VS Code/Code.exe\" --new-window --wait --diff \"$LOCAL\" \"$REMOTE\"
 [merge]
 	tool = vscode
-[mergetool "vscode"]
-	path = PathTo/Microsoft VS Code/Code.exe
-	cmd = \"PathTo/Microsoft VS Code/Code.exe\" --new-window --wait --merge \"$REMOTE\" \"$LOCAL\" \"$BASE\" \"$MERGED\"
 
 # Configuration des actions de pull/push/fetch
 [push]

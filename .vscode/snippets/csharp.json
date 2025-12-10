@@ -1,0 +1,57 @@
+{
+	"Get Set": {
+		"prefix": "gs",
+		"body": "{ get; set; }",
+		"description": "Getter and setter"
+	},
+	"Get Init": {
+		"prefix": "gi",
+		"body": "{ get; init; }",
+		"description": "Getter and initializer"
+	},
+	"Public class": {
+		"prefix": "pc",
+		"body": "public class ",
+		"description": "Public class"
+	},
+	"Public sealed class": {
+		"prefix": "psc",
+		"body": "public sealed class ",
+		"description": "Public sealed class"
+	},
+	"Internal class": {
+		"prefix": "ic",
+		"body": "internal class ",
+		"description": "Internal class"
+	},
+	"Internal sealed class": {
+		"prefix": "isc",
+		"body": "internal sealed class ",
+		"description": "Internal sealed class"
+	},
+	"Public struct": {
+		"prefix": "ps",
+		"body": "public struct ",
+		"description": "Public struct"
+	},
+	"Public readonly struct": {
+		"prefix": "prs",
+		"body": "public readonly struct ",
+		"description": "Public readonly struct"
+	},
+	"Public record": {
+		"prefix": "pr",
+		"body": "public record ",
+		"description": "Public record"
+	},
+	"Public sealed record": {
+		"prefix": "psr",
+		"body": "public static record ",
+		"description": "Public static record"
+	},
+	"Public readonly record struct": {
+		"prefix": "prrs",
+		"body": "public readonly record struct ",
+		"description": "Public readonly record struct"
+	}
+}

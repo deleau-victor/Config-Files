@@ -1,6 +1,6 @@
 {
 	"Vue Component": {
-		"prefix": "VC",
+		"prefix": "vc",
 		"description": "A simple vue component",
 		"body": [
 			"<template>",

@@ -1,5 +1,5 @@
 :root {
-  --font-family: 'JetBrains Mono';
+  --font-family: "JetBrains Mono";
   --border-radius: 15px;
   --spacing: 5px;
   --spacing-color: #000001;
@@ -58,18 +58,8 @@ body .monaco-workbench .part.auxiliarybar .integrated-terminal .tabs-container {
   width: calc(100% - var(--spacing) * 2) !important;
 }
 
-body
-  .monaco-workbench
-  .part.sidebar
-  .integrated-terminal
-  .tabs-container:not(.has-text)
-  .monaco-list-row,
-body
-  .monaco-workbench
-  .part.auxiliarybar
-  .integrated-terminal
-  .tabs-container:not(.has-text)
-  .monaco-list-row {
+body .monaco-workbench .part.sidebar .integrated-terminal .tabs-container:not(.has-text) .monaco-list-row,
+body .monaco-workbench .part.auxiliarybar .integrated-terminal .tabs-container:not(.has-text) .monaco-list-row {
   background: none !important;
 }
 
@@ -169,12 +159,7 @@ body .monaco-workbench .part.panel .pane-body .monaco-list-row {
   margin-left: 5px;
 }
 
-body
-  .monaco-workbench
-  .part.panel
-  .pane-body.integrated-terminal
-  .tabs-container:not(.has-text)
-  .monaco-list-row {
+body .monaco-workbench .part.panel .pane-body.integrated-terminal .tabs-container:not(.has-text) .monaco-list-row {
   background: none !important;
 }
 
@@ -223,12 +208,7 @@ body .monaco-workbench .part.editor .editor-container .monaco-editor .editor-scr
 
 /* gutter current line highlight */
 body .monaco-workbench .part.editor .monaco-editor .margin-view-overlays .current-line-margin,
-body
-  .monaco-workbench
-  .part.editor
-  .monaco-editor
-  .margin-view-overlays
-  .current-line-exact-margin {
+body .monaco-workbench .part.editor .monaco-editor .margin-view-overlays .current-line-exact-margin {
   background-color: rgb(from var(--accent-color) r g b / 0.11) !important;
   outline: 1px solid rgb(from var(--accent-color) r g b / 0) !important;
   box-shadow: var(--elev-shadow) !important;
@@ -239,30 +219,20 @@ body
 }
 
 /* activitybar highlight active tab */
-body
-  .monaco-workbench
-  .part.activitybar
-  ul[role='tablist']
-  .action-item.checked
-  .action-label::after {
+body .monaco-workbench .part.activitybar ul[role="tablist"] .action-item.checked .action-label::after {
   width: 80%;
   height: 80%;
   position: absolute;
   border-radius: 6px;
-  content: '';
+  content: "";
   background-color: rgb(from var(--accent-color) r g b / 0.22);
   box-shadow: var(--elev-shadow) !important;
 }
 
 /* highlight tabs for acitvitybar top */
-body
-  .monaco-workbench
-  .part.auxiliarybar
-  ul[role='tablist']
-  .action-item.checked
-  .action-label::after,
-body .monaco-workbench .part.sidebar ul[role='tablist'] .action-item.checked .action-label::after {
-  content: '';
+body .monaco-workbench .part.auxiliarybar ul[role="tablist"] .action-item.checked .action-label::after,
+body .monaco-workbench .part.sidebar ul[role="tablist"] .action-item.checked .action-label::after {
+  content: "";
   width: 110%;
   height: 75%;
   position: absolute;
@@ -271,12 +241,12 @@ body .monaco-workbench .part.sidebar ul[role='tablist'] .action-item.checked .ac
   background-color: rgb(from var(--accent-color) r g b / 0.22);
   box-shadow: var(--elev-shadow) !important;
 }
-body .monaco-workbench .part.auxiliarybar ul[role='tablist'] .action-item .active-item-indicator,
-body .monaco-workbench .part.sidebar ul[role='tablist'] .action-item .active-item-indicator {
+body .monaco-workbench .part.auxiliarybar ul[role="tablist"] .action-item .active-item-indicator,
+body .monaco-workbench .part.sidebar ul[role="tablist"] .action-item .active-item-indicator {
   display: none;
 }
 
-iframe.webview[src*='claude-code'] {
+iframe.webview[src*="claude-code"] {
   clip-path: inset(0 round 12px) !important;
   border-radius: 3rem !important;
   overflow: hidden !important;
@@ -315,7 +285,7 @@ body .monaco-workbench .part.panel .action-item .active-item-indicator {
   > .actions-container
   > .action-item
   > .action-label.checked::after {
-  content: '';
+  content: "";
   width: 95%;
   height: 75%;
   position: absolute;
@@ -418,13 +388,7 @@ body .monaco-workbench .part.panel .action-item .active-item-indicator {
   background: none !important;
   box-shadow: none !important;
 }
-.part.editor
-  .editor-container
-  .keybindings-editor
-  .keybindings-body
-  .monaco-list-row
-  .monaco-table-td
-  .actions {
+.part.editor .editor-container .keybindings-editor .keybindings-body .monaco-list-row .monaco-table-td .actions {
   margin-left: -10px;
 }
 
@@ -433,10 +397,10 @@ body .monaco-workbench .part.panel .action-item .active-item-indicator {
 /* #region-------miscellaneous tweaks-------*/
 
 /* activitybar top centered and bigger */
-.part.sidebar ul[role='tablist'] .action-item .action-label.codicon {
+.part.sidebar ul[role="tablist"] .action-item .action-label.codicon {
   font-size: 20px;
 }
-.part.sidebar ul[role='tablist'] .action-item .action-label:not(.codicon) {
+.part.sidebar ul[role="tablist"] .action-item .action-label:not(.codicon) {
   font-size: 13px;
 }
 .part.sidebar .composite-bar-container .composite-bar {
@@ -456,20 +420,13 @@ body .monaco-workbench .part.panel .action-item .active-item-indicator {
 }
 
 /* bigger file icons and labels*/
-.pane-body
-  .explorer-folders-view.file-icon-themable-tree
-  .monaco-tree-sticky-container
-  .monaco-tl-row,
+.pane-body .explorer-folders-view.file-icon-themable-tree .monaco-tree-sticky-container .monaco-tl-row,
 .pane-body
   .explorer-folders-view.file-icon-themable-tree
   .monaco-list-rows
   .monaco-tl-row
   .monaco-tl-twistie.collapsible.codicon,
-.pane-body
-  .explorer-folders-view.file-icon-themable-tree
-  .monaco-list-rows
-  .monaco-tl-row
-  .monaco-icon-label::before {
+.pane-body .explorer-folders-view.file-icon-themable-tree .monaco-list-rows .monaco-tl-row .monaco-icon-label::before {
   background-size: calc(0.75 * var(--filetree-icon-scale)) !important;
   font-size: calc(1.25 * var(--filetree-icon-scale)) !important;
 }
@@ -684,21 +641,21 @@ body
   width: unset;
   border-radius: var(--border-radius);
 }
-body
-  .monaco-workbench
-  .editor-group-container
-  .monaco-diff-editor
-  .editor.modified
-  .sticky-widget:not(.peek),
+body .monaco-workbench .editor-group-container .monaco-diff-editor .editor.modified .sticky-widget:not(.peek),
 body .monaco-workbench .editor-instance > .monaco-editor .sticky-widget:not(.peek) {
   width: calc(var(--editor-width) - 14px) !important;
 }
 body .monaco-workbench .monaco-diff-editor .editor.modified .decorationsOverviewRuler,
-body .monaco-workbench .monaco-diff-editor .editor.modified .scrollbar.vertical,
-body .monaco-workbench .editor-instance > .monaco-editor .decorationsOverviewRuler,
-body .monaco-workbench .editor-instance > .monaco-editor .editor-scrollable .scrollbar.vertical {
+body .monaco-workbench .editor-instance > .monaco-editor .decorationsOverviewRuler {
   left: unset !important;
+  right: var(--margin-horizontal) !important;
 }
+
+body .monaco-workbench .monaco-diff-editor .editor.modified .scrollbar.vertical,
+body .monaco-workbench .editor-instance > .monaco-editor .editor-scrollable .scrollbar.vertical {
+  right: calc(var(--margin-horizontal) + 8px) !important;
+}
+
 body .monaco-workbench .monaco-editor .minimap {
   right: calc(var(--margin-horizontal) - 6px - 1px) !important;
 }
@@ -731,7 +688,7 @@ body .monaco-workbench .zone-widget .peekview-widget .decorationsOverviewRuler {
 .monaco-list-rows .monaco-list-row.selected::before,
 .monaco-list-rows .monaco-list-row.focused::before {
   position: absolute;
-  content: '';
+  content: "";
   top: 20% !important;
   height: 60% !important;
   width: 3px !important;
@@ -762,11 +719,7 @@ body .monaco-workbench .zone-widget .peekview-widget .decorationsOverviewRuler {
   left: 7px !important;
   width: 3.5px !important;
 }
-.settings-editor
-  .settings-body
-  .settings-tree-container
-  .monaco-list-rows
-  .monaco-list-row::before {
+.settings-editor .settings-body .settings-tree-container .monaco-list-rows .monaco-list-row::before {
   display: none !important;
 }
 .editor-widget.suggest-widget .monaco-list-rows .monaco-list-row {

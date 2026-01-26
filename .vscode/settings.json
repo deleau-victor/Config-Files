@@ -3,14 +3,20 @@
     // ************ Workbench Config *************
     // *******************************************
     "workbench.activityBar.location": "top",
-    "workbench.colorCustomizations": {
-        "editor.lineHighlightBackground": "#1073cf2d",
-        "editor.lineHighlightBorder": "#9fced11f"
-    },
-    "workbench.colorTheme": "One Dark Pro",
+    "workbench.colorTheme": "One Dark Pro Darker",
     "workbench.iconTheme": "material-icon-theme",
+    "workbench.productIconTheme": "jetbrains-idea-product-icon-theme",
     "workbench.tree.indent": 22,
     "workbench.tree.renderIndentGuides": "always",
+    "workbench.editorAssociations": {
+        "*.copilot.md": "vscode.markdown.preview.editor",
+        "*.svg": "default"
+    },
+    "custom-ui-style.external.imports": [
+        "file:///C:/Users/Victor/.vscode/extensions/ui-patch/css.css",
+        "file:///C:/Users/Victor/.vscode/extensions/ui-patch/js.js"
+    ],
+    "custom-ui-style.external.loadStrategy": "cache",
     "notebook.diff.enablePreview": false,
     // *******************************************
     // ************** Editor Config **************
@@ -38,9 +44,9 @@
     "editor.renderWhitespace": "trailing",
     "editor.snippetSuggestions": "inline",
     "editor.suggest.insertMode": "replace",
-    "editor.tabSize": 3,
+    "editor.tabSize": 4,
     "editor.wordWrap": "on",
-    "editor.wordWrapColumn": 100,
+    "editor.wordWrapColumn": 120,
     // *******************************************
     // *********** Diff Editor Config ************
     // *******************************************
@@ -60,12 +66,16 @@
         "**/bin/**": true,
         "**/obj/**": true
     },
+    "files.associations": {
+        "*.json": "jsonc"
+    },
     // *******************************************
     // ************* Explorer Config *************
     // *******************************************
     "explorer.autoReveal": false,
     "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
+    "explorer.compactFolders": false,
     // *******************************************
     // ************ Javascript Config ************
     // *******************************************
@@ -82,23 +92,41 @@
     "git.autofetch": true,
     "git.confirmSync": false,
     "git.enableSmartCommit": true,
-    // "git.path": "\\\\wsl.localhost\\Debian\\usr\\bin\\git", => If you want to use WSL git
+    // "git.path": "\\\\wsl.localhost\\Ubuntu-24.04\\usr\\bin\\git", => If you want to use WSL git
     // *******************************************
     // ************* Prettier Config *************
     // *******************************************
     "prettier.arrowParens": "always",
     "prettier.bracketSpacing": true,
-    "prettier.printWidth": 100,
+    "prettier.printWidth": 120,
     "prettier.semi": true,
-    "prettier.singleQuote": true,
+    "prettier.singleQuote": false,
     "prettier.useTabs": false,
     "prettier.endOfLine": "lf",
     // *******************************************
     // ************* Material Config *************
     // *******************************************
+    "material-icon-theme.hidesExplorerArrows": true,
     "material-icon-theme.activeIconPack": "vue_vuex",
     "material-icon-theme.folders.theme": "specific",
-    "material-icon-theme.hidesExplorerArrows": true,
+    "material-icon-theme.folders.associations": {
+        "features": "App",
+        "stores": "Ngrx-store",
+        "http": "Api",
+        "Converters": "pipe",
+        "Endpoints": "Api",
+        "Abstractions": "Base",
+        "Persistence": "Database",
+        "DependencyInjection": "../../../../custom-icons/folder-injection",
+        "Commands": "../../../../custom-icons/folder-command",
+        "Queries": "../../../../custom-icons/folder-query",
+        "Caching": "../../../../custom-icons/folder-redis"
+    },
+    "material-icon-theme.files.associations": {
+        "*.store.ts": "Angular-resolver",
+        "*.cs": "../../custom-icons/csharp",
+        "*.Tests.cs": "../../custom-icons/test-cs"
+    },
     // *******************************************
     // ************* Terminal Config *************
     // *******************************************
@@ -206,5 +234,32 @@
             "italic": false
         }
     ],
+    // *******************************************
+    // ************* LLM Chat Config *************
+    // *******************************************
+    "claudeCode.preferredLocation": "sidebar",
+    "chat.viewSessions.orientation": "stacked",
+    "github.copilot.enable": {
+        "*": true,
+        "plaintext": false,
+        "scminput": false
+    },
+    // *******************************************
+    // ************* JS Tests Config *************
+    // *******************************************
+    "jest.runMode": "on-demand",
+    // *******************************************
+    // ************** Remote Config **************
+    // *******************************************
+    "remote.autoForwardPortsSource": "hybrid",
+    "remote.SSH.remotePlatform": {
+        // "my-remote-server": "linux"
+    },
+    // *******************************************
+    // ********* Project Manager Config **********
+    // *******************************************
     "projectManager.tags": []
+    // *******************************************
+    // ********* Workbench color Config **********
+    // *******************************************
 }

@@ -1,0 +1,793 @@
+:root {
+  --font-family: 'JetBrains Mono';
+  --border-radius: 15px;
+  --spacing: 5px;
+  --spacing-color: #000001;
+  --accent-color: #c08457;
+  /* 0=no & 1=yes */
+  --immersive: 0;
+  --filetree-icon-scale: 120%;
+  --filetree-label-scale: 120%;
+  --elev-shadow: rgba(0, 0, 0, 0.2) 0px 20px 25px -5px, rgba(0, 0, 0, 0.25) 0px 10px 10px -5px;
+}
+
+body .monaco-workbench {
+  font-family: var(--font-family) !important;
+  background-color: var(--spacing-color) !important;
+}
+
+/* #region-------rounded corners and spacing-------*/
+
+/* Simplified: Apply base styles directly without complex :has() chains */
+/* Simplified layout radius & spacing rules ------------------------------------------------ */
+body .monaco-workbench .part.activitybar.left {
+  border-radius: var(--border-radius) 0 0 var(--border-radius) !important;
+  margin-left: calc(var(--spacing) * 2);
+}
+body .monaco-workbench .part.activitybar.right {
+  border-radius: 0 var(--border-radius) var(--border-radius) 0 !important;
+  margin-right: calc(var(--spacing) * 2);
+}
+body .monaco-workbench .part.sidebar,
+body .monaco-workbench .part.auxiliarybar {
+  border-radius: var(--border-radius) !important;
+}
+body .monaco-workbench .part.sidebar.left,
+body .monaco-workbench .part.auxiliarybar.left {
+  margin: calc(var(--spacing) * 2) 0 0 calc(var(--spacing) * 2) !important;
+  height: calc(100% - var(--spacing) * 4) !important;
+  width: calc(100% - var(--spacing) * 2) !important;
+  box-sizing: border-box !important;
+  overflow: clip !important;
+}
+body .monaco-workbench .part.sidebar.right,
+body .monaco-workbench .part.auxiliarybar.right {
+  margin: calc(var(--spacing) * 2) calc(var(--spacing) * 2) 0 0 !important;
+  height: calc(100% - var(--spacing) * 2) !important;
+  width: calc(100% - var(--spacing) * 2) !important;
+  overflow: clip !important;
+}
+
+/* Sidebar adjustments */
+body .monaco-workbench .part.sidebar .search-view .search-widget .replace-container {
+  width: calc(100% - var(--spacing) * 2 - 20px) !important;
+}
+
+body .monaco-workbench .part.sidebar .integrated-terminal .tabs-container,
+body .monaco-workbench .part.auxiliarybar .integrated-terminal .tabs-container {
+  width: calc(100% - var(--spacing) * 2) !important;
+}
+
+body
+  .monaco-workbench
+  .part.sidebar
+  .integrated-terminal
+  .tabs-container:not(.has-text)
+  .monaco-list-row,
+body
+  .monaco-workbench
+  .part.auxiliarybar
+  .integrated-terminal
+  .tabs-container:not(.has-text)
+  .monaco-list-row {
+  background: none !important;
+}
+
+body
+  .monaco-workbench
+  .part.sidebar
+  .integrated-terminal
+  .tabs-container
+  .monaco-list-row
+  .terminal-tabs-entry.is-active::before,
+body
+  .monaco-workbench
+  .part.auxiliarybar
+  .integrated-terminal
+  .tabs-container
+  .monaco-list-row
+  .terminal-tabs-entry.is-active::before {
+  display: none !important;
+}
+
+/* Editor layout & minimap --------------------------------------------------------------- */
+body .monaco-workbench .part.editor {
+  --editor-width: calc(100% - var(--spacing) * 4);
+  --editor-height: calc(100% - var(--spacing) * 2);
+  --margin-horizontal: calc(var(--spacing) * 4);
+  width: var(--editor-width);
+  height: var(--editor-height);
+  margin: calc(var(--spacing) * 2) calc(var(--margin-horizontal) / 2) 0 !important;
+  border-radius: var(--border-radius) !important;
+}
+body .monaco-workbench .part.editor > .content {
+  width: 100% !important;
+}
+body .monaco-workbench .part.editor > .content .editor-actions {
+  position: static !important;
+  margin-top: auto !important;
+  margin-bottom: auto !important;
+}
+body .monaco-workbench .part.editor .editor-group-container {
+  border-radius: var(--border-radius);
+}
+body .monaco-workbench .part.editor .editor-group-container .sticky-widget:not(.peek) {
+  width: calc(var(--editor-width) - 14px) !important;
+}
+body .monaco-workbench .part.editor .editor-group-container .monaco-editor .minimap {
+  right: calc(var(--margin-horizontal) + 14px - 1px) !important;
+}
+body .monaco-workbench .part.editor .editor-group-container .monaco-diff-editor .diffOverview {
+  right: 0px !important;
+  background-color: var(--vscode-editor-background) !important;
+}
+body .monaco-workbench .part.editor .zone-widget .peekview-widget {
+  width: calc(100% - 14px - var(--spacing)) !important;
+}
+body .monaco-workbench .part.editor .zone-widget .peekview-widget .ref-tree.inline {
+  width: calc(100% - 14px - var(--spacing)) !important;
+}
+body .monaco-workbench .part.editor .zone-widget .peekview-widget .scrollbar.vertical,
+body .monaco-workbench .part.editor .zone-widget .peekview-widget .decorationsOverviewRuler {
+  right: 0px !important;
+}
+
+/* Panels -------------------------------------------------------------------------------- */
+body .monaco-workbench .part.panel {
+  border-radius: var(--border-radius) !important;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden !important;
+}
+body .monaco-workbench .part.panel > .content {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+}
+body .monaco-workbench .part.panel.bottom {
+  margin: calc(var(--spacing) * 2) calc(var(--spacing) * 2) 0 calc(var(--spacing) * 2) !important;
+  width: calc(100% - var(--spacing) * 4) !important;
+  height: calc(100% - var(--spacing) * 4) !important;
+}
+body .monaco-workbench .part.panel.top {
+  margin: 0 calc(var(--spacing) * 2) calc(var(--spacing) * 2) calc(var(--spacing) * 2) !important;
+  width: calc(100% - var(--spacing) * 4) !important;
+  height: calc(100% - var(--spacing) * 2) !important;
+}
+body .monaco-workbench .part.panel.left {
+  margin-left: calc(var(--spacing) * 2) !important;
+  width: calc(100% - var(--spacing) * 2) !important;
+}
+body .monaco-workbench .part.panel.right {
+  margin-right: calc(var(--spacing) * 2) !important;
+  width: calc(100% - var(--spacing) * 2) !important;
+}
+
+/* Panel adjustments */
+body .monaco-workbench .part.panel .pane-body .monaco-list-row {
+  width: calc(100% - 10px);
+  margin-left: 5px;
+}
+
+body
+  .monaco-workbench
+  .part.panel
+  .pane-body.integrated-terminal
+  .tabs-container:not(.has-text)
+  .monaco-list-row {
+  background: none !important;
+}
+
+body
+  .monaco-workbench
+  .part.panel
+  .pane-body.integrated-terminal
+  .tabs-container
+  .monaco-list-row
+  .terminal-tabs-entry.is-active::before {
+  display: none !important;
+}
+
+body .monaco-workbench .part.panel .pane-body .repl {
+  display: flex;
+  flex-direction: column-reverse;
+}
+body .monaco-workbench .part.panel .pane-body .repl .repl-input-wrapper {
+  position: absolute;
+}
+
+/* #endregion-------rounded corners and spacing-------*/
+
+/* Highlight active editor tab ---------------------------------------------------------- */
+body .monaco-workbench .part.editor .tabs-container {
+  padding: 7px !important;
+}
+body .monaco-workbench .part.editor .tabs-container .tab.selected {
+  border-radius: 7px !important;
+  background-color: rgb(from var(--accent-color) r g b / 0.22) !important;
+  outline: 1px solid rgb(from var(--accent-color) r g b / 0) !important;
+  box-shadow: var(--elev-shadow) !important;
+}
+body .monaco-workbench .part.editor .tabs-container .tab-border-top-container,
+body .monaco-workbench .part.editor .tabs-container .tab-border-bottom-container {
+  display: none !important;
+}
+body .monaco-workbench .part.editor .editor-container {
+  height: calc(100% - 35px - 14px) !important;
+}
+body .monaco-workbench .part.editor .editor-container .monaco-editor,
+body .monaco-workbench .part.editor .editor-container .monaco-editor .overflow-guard,
+body .monaco-workbench .part.editor .editor-container .monaco-editor .editor-scrollable {
+  height: 100% !important;
+}
+
+/* gutter current line highlight */
+body .monaco-workbench .part.editor .monaco-editor .margin-view-overlays .current-line-margin,
+body
+  .monaco-workbench
+  .part.editor
+  .monaco-editor
+  .margin-view-overlays
+  .current-line-exact-margin {
+  background-color: rgb(from var(--accent-color) r g b / 0.11) !important;
+  outline: 1px solid rgb(from var(--accent-color) r g b / 0) !important;
+  box-shadow: var(--elev-shadow) !important;
+  border-radius: 7px !important;
+  max-height: 95% !important;
+  max-width: 77% !important;
+  margin-left: 7% !important;
+}
+
+/* activitybar highlight active tab */
+body
+  .monaco-workbench
+  .part.activitybar
+  ul[role='tablist']
+  .action-item.checked
+  .action-label::after {
+  width: 80%;
+  height: 80%;
+  position: absolute;
+  border-radius: 6px;
+  content: '';
+  background-color: rgb(from var(--accent-color) r g b / 0.22);
+  box-shadow: var(--elev-shadow) !important;
+}
+
+/* highlight tabs for acitvitybar top */
+body
+  .monaco-workbench
+  .part.auxiliarybar
+  ul[role='tablist']
+  .action-item.checked
+  .action-label::after,
+body .monaco-workbench .part.sidebar ul[role='tablist'] .action-item.checked .action-label::after {
+  content: '';
+  width: 110%;
+  height: 75%;
+  position: absolute;
+  left: 1px !important;
+  border-radius: 6px;
+  background-color: rgb(from var(--accent-color) r g b / 0.22);
+  box-shadow: var(--elev-shadow) !important;
+}
+body .monaco-workbench .part.auxiliarybar ul[role='tablist'] .action-item .active-item-indicator,
+body .monaco-workbench .part.sidebar ul[role='tablist'] .action-item .active-item-indicator {
+  display: none;
+}
+
+iframe.webview[src*='claude-code'] {
+  clip-path: inset(0 round 12px) !important;
+  border-radius: 3rem !important;
+  overflow: hidden !important;
+  margin-left: -10px;
+  box-sizing: border-box;
+  padding-bottom: 0.65rem;
+}
+
+/* sidebar active headers highlight */
+body .monaco-workbench .part.sidebar .pane-header.expanded,
+body .monaco-workbench .part.auxiliarybar .pane-header.expanded {
+  background-color: rgb(from var(--accent-color) r g b / 0.11) !important;
+  border: 1px solid var(--vscode-sideBar-background) !important;
+  box-sizing: content-box;
+  border-radius: 6px !important;
+  box-shadow: var(--elev-shadow) !important;
+}
+
+/* panel tabs */
+body .monaco-workbench .part.panel .action-item.checked {
+  height: 70%;
+  border-radius: 6px !important;
+  background-color: rgb(from var(--accent-color) r g b / 0.22) !important;
+  outline: 1px solid rgb(from var(--accent-color) r g b / 0) !important;
+  box-shadow: var(--elev-shadow) !important;
+}
+body .monaco-workbench .part.panel .action-item .active-item-indicator {
+  display: none !important;
+}
+
+/* extension */
+.extension-editor
+  > .body
+  > .navbar
+  > .monaco-action-bar
+  > .actions-container
+  > .action-item
+  > .action-label.checked::after {
+  content: '';
+  width: 95%;
+  height: 75%;
+  position: absolute;
+  top: 3px !important;
+  left: 2px !important;
+  border-radius: 6px;
+  background-color: rgb(from var(--accent-color) r g b / 0.22);
+  outline: 1px solid rgb(from var(--accent-color) r g b / 0) !important;
+  box-shadow: var(--elev-shadow) !important;
+}
+
+/* #endregion-------highlight active------*/
+
+/* #region-------scrollbar sliders and minimap-------*/
+.scrollbar.vertical .slider,
+.scrollbar.horizontal .slider {
+  border-radius: 200px !important;
+  min-width: 3px !important;
+  min-height: 3px !important;
+  cursor: grab !important;
+}
+.scrollbar.vertical .slider {
+  width: 30% !important;
+  left: 40% !important;
+}
+.scrollbar.vertical:hover .slider {
+  width: 50% !important;
+  left: 30% !important;
+}
+.part.sidebar .pane-body .scrollbar.vertical .slider {
+  left: 60% !important;
+}
+.part.sidebar .pane-body .scrollbar.vertical:hover .slider {
+  left: 40% !important;
+}
+.scrollbar.horizontal .slider {
+  height: 30% !important;
+}
+.scrollbar.horizontal:hover .slider {
+  height: 60% !important;
+}
+.monaco-diff-editor .diffOverview .diffViewport,
+.minimap-slider {
+  border-radius: 4px !important;
+  cursor: grab !important;
+  box-shadow: var(--elev-shadow) !important;
+}
+.monaco-diff-editor .diffOverview .diffViewport:active,
+.minimap-slider:active {
+  cursor: grabbing !important;
+}
+
+/* #endregion-------scrollbar sliders and minimap-------*/
+
+/* #region-------list rows highlight-------*/
+
+/* List rows highlight ------------------------------------------------------------------ */
+.monaco-tree-sticky-row.monaco-list-row,
+.monaco-list-rows .monaco-list-row {
+  width: calc(100% - 10px) !important;
+  margin-left: 5px !important;
+  box-sizing: border-box;
+  padding-right: 10px;
+}
+
+.xterm .xterm-screen canvas.xterm-link-layer {
+  top: 20px !important;
+}
+
+.monaco-tree-sticky-row.monaco-list-row:not(.force-no-hover):hover,
+.monaco-list-rows .monaco-list-row:not(.force-no-hover):hover,
+.monaco-list-row.focused,
+.monaco-list-row.selected {
+  background-color: rgb(from var(--accent-color) r g b / 0.11) !important;
+  outline: 1px solid var(--vscode-editor-background) !important;
+  border-radius: 6px !important;
+  box-shadow: var(--elev-shadow) !important;
+}
+.part.panel .pane-body.integrated-terminal .tabs-container:not(.has-text) .monaco-list-row,
+.quick-input-widget .quick-input-list .monaco-list-rows .monaco-list-row,
+.notifications-toasts .monaco-list-row {
+  width: 100% !important;
+  margin-left: 0 !important;
+}
+.zone-widget .body .ref-tree .monaco-list-rows .monaco-list-row:not(.force-no-hover):hover,
+.notifications-center .monaco-list-rows .monaco-list-row:not(.force-no-hover):hover,
+.notification-toast .monaco-list-rows .monaco-list-row:not(.force-no-hover):hover,
+.editor-widget.suggest-widget .monaco-list-rows .monaco-list-row:not(.force-no-hover):hover,
+.quick-input-widget .quick-input-list .monaco-list-rows .monaco-list-row:not(.force-no-hover):hover,
+.monaco-list-row.focused,
+.monaco-list-row.selected {
+  outline: 1px solid var(--vscode-quickInput-background) !important;
+}
+.profiles-editor .contents-view .profile-body .monaco-list-rows .monaco-list-row:hover,
+.profiles-editor .contents-view .profile-body .monaco-list-rows .monaco-list-row.focused,
+.profiles-editor .contents-view .profile-body .monaco-list-rows .monaco-list-row.selected,
+.settings-tree-container .monaco-list-rows .monaco-list-row:hover,
+.settings-tree-container .monaco-list-rows .monaco-list-row.focused,
+.settings-tree-container .monaco-list-rows .monaco-list-row.selected {
+  background: none !important;
+  box-shadow: none !important;
+}
+.part.editor
+  .editor-container
+  .keybindings-editor
+  .keybindings-body
+  .monaco-list-row
+  .monaco-table-td
+  .actions {
+  margin-left: -10px;
+}
+
+/* #endregion-------list rows highlight-------*/
+
+/* #region-------miscellaneous tweaks-------*/
+
+/* activitybar top centered and bigger */
+.part.sidebar ul[role='tablist'] .action-item .action-label.codicon {
+  font-size: 20px;
+}
+.part.sidebar ul[role='tablist'] .action-item .action-label:not(.codicon) {
+  font-size: 13px;
+}
+.part.sidebar .composite-bar-container .composite-bar {
+  width: 100%;
+}
+.part.sidebar .composite-bar-container .actions-container {
+  justify-content: space-evenly !important;
+}
+
+/* Sidebar bigger title */
+.monaco-workbench .part.sidebar > .title > .title-label h2,
+.monaco-workbench .part.auxiliarybar > .title > .title-label h2 {
+  color: var(--vscode-sideBarTitle-foreground) !important;
+  text-transform: none !important;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+/* bigger file icons and labels*/
+.pane-body
+  .explorer-folders-view.file-icon-themable-tree
+  .monaco-tree-sticky-container
+  .monaco-tl-row,
+.pane-body
+  .explorer-folders-view.file-icon-themable-tree
+  .monaco-list-rows
+  .monaco-tl-row
+  .monaco-tl-twistie.collapsible.codicon,
+.pane-body
+  .explorer-folders-view.file-icon-themable-tree
+  .monaco-list-rows
+  .monaco-tl-row
+  .monaco-icon-label::before {
+  background-size: calc(0.75 * var(--filetree-icon-scale)) !important;
+  font-size: calc(1.25 * var(--filetree-icon-scale)) !important;
+}
+.pane-body
+  .explorer-folders-view.file-icon-themable-tree
+  .monaco-list-rows
+  .monaco-tl-row
+  .monaco-tl-contents
+  .label-name {
+  font-size: calc(1 * var(--filetree-label-scale)) !important;
+  padding-left: calc(0.01 * var(--filetree-label-scale)) !important;
+}
+
+/* Command palette bigger text input*/
+.quick-input-filter .monaco-inputbox {
+  border-radius: 8px !important;
+  padding: 4px !important;
+  background-color: var(--vscode-editor-background) !important;
+  font-size: 14px !important;
+  margin-bottom: 16px !important;
+}
+
+/* tweak editor find widget */
+.monaco-editor .find-widget.visible {
+  top: 10px !important;
+  border-radius: 6px !important;
+  border: 1px solid var(--vscode-editorWidget-border) !important;
+}
+
+/* Remove tips from home page. */
+.editor-group-watermark .shortcuts {
+  display: none !important;
+}
+
+/* Remove vscode icon in the titlebar */
+.part.titlebar .window-appicon {
+  display: none;
+}
+
+/* accent hover colored icons in the titlebar */
+.part.titlebar .action-label.codicon:hover {
+  color: var(--accent-color) !important;
+}
+
+/* colorpicker */
+.colorpicker-color-decoration {
+  border: none !important;
+  border-radius: 30% !important;
+}
+
+/* colored icons in statusbar */
+.part.statusbar .codicon {
+  color: var(--accent-color) !important;
+}
+.part.statusbar .statusbar-item-label:hover .codicon.codicon-remote {
+  color: var(--vscode-statusBarItem-remoteHoverForeground) !important;
+}
+.part.statusbar .codicon-error {
+  color: #ff3377 !important;
+}
+.part.statusbar .codicon-warning,
+.part.statusbar .codicon-alert {
+  color: #eebb11 !important;
+}
+.part.statusbar .codicon-sync,
+.part.statusbar .codicon-git-commit,
+.part.statusbar .codicon-repo,
+.part.statusbar .codicon-cloud-upload,
+.part.statusbar .codicon-git-branch {
+  color: #7733ff !important;
+}
+.part.statusbar .codicon-bell,
+.part.statusbar .codicon-bell-dot {
+  color: #0e80c0 !important;
+}
+
+.pane-body .explorer-folders-view.file-icon-themable-tree .monaco-tl-twistie.collapsible.codicon,
+.pane-body .explorer-folders-view.file-icon-themable-tree .monaco-icon-label::before {
+  background-size: calc(0.75 * var(--filetree-icon-scale)) !important;
+  font-size: calc(1.25 * var(--filetree-icon-scale)) !important;
+}
+.pane-body .explorer-folders-view.file-icon-themable-tree .monaco-tl-contents .label-name {
+  font-size: calc(1 * var(--filetree-label-scale)) !important;
+  padding-left: calc(0.01 * var(--filetree-label-scale)) !important;
+}
+
+/* immersive: hide titlebar and statusbar content */
+.part.titlebar .titlebar-center,
+.part.titlebar .titlebar-right,
+.part.titlebar .menubar,
+.part.statusbar .items-container {
+  opacity: calc(1 - var(--immersive)) !important;
+  transition: all 0.25s;
+}
+.part.titlebar .titlebar-center:hover,
+.part.titlebar .titlebar-right:hover,
+.part.titlebar .menubar:hover,
+.part.statusbar .items-container:hover {
+  opacity: 1 !important;
+}
+
+/* fix in foucs quick input keybindingLabel background */
+.quick-input-widget
+  .quick-input-list
+  .monaco-list-row:hover
+  .quick-input-list-row
+  .quick-input-list-entry-keybinding
+  .monaco-keybinding
+  .monaco-keybinding-key,
+.quick-input-widget
+  .quick-input-list
+  .monaco-list-row.focused
+  .quick-input-list-row
+  .quick-input-list-entry-keybinding
+  .monaco-keybinding
+  .monaco-keybinding-key {
+  background-color: var(--vscode-keybindingLabel-background) !important;
+  color: var(--accent-color) !important;
+}
+
+/* #region-------rounded corners for many things like lists and inputs-------*/
+.scm-editor,
+.monaco-button,
+.monaco-select-box,
+.monaco-inputbox,
+.monaco-hover,
+.monaco-editor .find-widget,
+.suggest-input-container,
+.suggest-details,
+.editor-widget.suggest-widget,
+.chat-input-container,
+.notification-fade-in-done,
+.notification-toast,
+.notification-toast > .notifications-list-container,
+.notification-toast > .notifications-list-container > .monaco-list,
+.notifications-center,
+.monaco-menu .action-item a.focused,
+.monaco-menu .action-item a:hover,
+.part.sidebar .pane-header,
+.part.auxiliarybar .pane-header,
+.monaco-list.mouse-support,
+.monaco-list-row.focused,
+.monaco-list-row.selected,
+.monaco-list-row {
+  border-radius: 6px !important;
+}
+
+.cdr {
+  border-radius: 3px;
+}
+
+.monaco-button-dropdown .monaco-button-dropdown-separator {
+  display: none !important;
+}
+
+/* #endregion-------rounded corners for lists and inputs-------*/
+
+/* #endregion-------little tweaks-------*/
+
+/* #region-------animations-------*/
+
+/* settings icon animation in the activity bar */
+.codicon-settings-view-bar-icon {
+  transition: transform 250ms cubic-bezier(1, 1, 1, 1);
+}
+.codicon-settings-view-bar-icon:hover {
+  transform: rotate(90deg);
+  background-color: transparent !important;
+}
+
+/* gutter active line number animation */
+.line-numbers.active-line-number,
+.current-line.current-line-margin .line-numbers {
+  transform: scale(1.25) translateX(-3px);
+  animation: 0.2s ease-out scaleSize;
+}
+@keyframes scaleSize {
+  0% {
+    transform: scale(0.75);
+  }
+  100% {
+    transform: scale(1.35) translateX(-3px);
+  }
+}
+
+/* #endregion-------animations-------*/
+
+/* #region-------small fixes and optimizations-------*/
+
+/* #region-------vscode-------*/
+
+.monaco-split-view2.horizontal
+  > .monaco-scrollable-element
+  > .split-view-container
+  > .split-view-view.visible:last-of-type
+  .editor-group-container {
+  width: var(--editor-width);
+}
+
+body
+  .monaco-workbench
+  .part.editor
+  .content
+  > .grid-view-container
+  > .monaco-grid-view
+  > .monaco-grid-branch-node
+  .monaco-split-view2.horizontal
+  > .monaco-scrollable-element
+  > .split-view-container
+  > .split-view-view.visible:has(~ .split-view-view.visible)
+  .editor-group-container {
+  width: unset;
+  border-radius: var(--border-radius);
+}
+body
+  .monaco-workbench
+  .editor-group-container
+  .monaco-diff-editor
+  .editor.modified
+  .sticky-widget:not(.peek),
+body .monaco-workbench .editor-instance > .monaco-editor .sticky-widget:not(.peek) {
+  width: calc(var(--editor-width) - 14px) !important;
+}
+body .monaco-workbench .monaco-diff-editor .editor.modified .decorationsOverviewRuler,
+body .monaco-workbench .monaco-diff-editor .editor.modified .scrollbar.vertical,
+body .monaco-workbench .editor-instance > .monaco-editor .decorationsOverviewRuler,
+body .monaco-workbench .editor-instance > .monaco-editor .editor-scrollable .scrollbar.vertical {
+  left: unset !important;
+}
+body .monaco-workbench .monaco-editor .minimap {
+  right: calc(var(--margin-horizontal) - 6px - 1px) !important;
+}
+body .monaco-workbench .monaco-diff-editor .diffOverview {
+  right: 0px !important;
+  background-color: var(--vscode-editor-background) !important;
+}
+body .monaco-workbench .zone-widget .peekview-widget {
+  width: calc(100% - 14px - var(--spacing)) !important;
+}
+body .monaco-workbench .zone-widget .peekview-widget .ref-tree.inline {
+  width: calc(100% - 14px - var(--spacing)) !important;
+}
+body .monaco-workbench .zone-widget .peekview-widget .scrollbar.vertical,
+body .monaco-workbench .zone-widget .peekview-widget .decorationsOverviewRuler {
+  right: 0px !important;
+}
+
+/* #endregion-------vscode-------*/
+
+/* #endregion-------small fixes and optimizations-------*/
+
+/* --------------------------------- */
+/* --------------------------------- */
+/* --------------------------------- */
+/* --------------------------------- */
+/* --------------------------------- */
+
+/* indicator on the left of a list row */
+.monaco-list-rows .monaco-list-row.selected::before,
+.monaco-list-rows .monaco-list-row.focused::before {
+  position: absolute;
+  content: '';
+  top: 20% !important;
+  height: 60% !important;
+  width: 3px !important;
+  border-radius: 100px !important;
+  background-color: var(--accent-color) !important;
+  border: none !important;
+}
+.notifications-center .monaco-list-rows .monaco-list-row::before,
+.notifications-toasts .monaco-list-rows .monaco-list-row::before {
+  top: 0% !important;
+  height: 100% !important;
+}
+.part.panel .pane-body .monaco-list-rows .monaco-list-row::before,
+.part.auxiliarybar .pane-body .monaco-list-rows .monaco-list-row::before,
+.part.sidebar .pane-body .monaco-list-rows .monaco-list-row::before {
+  left: 0px !important;
+  width: 3.5px !important;
+}
+.quick-input-widget .quick-input-list .monaco-list-rows .monaco-list-row::before {
+  left: 4px !important;
+}
+.settings-editor
+  .settings-body
+  .settings-toc-container
+  .settings-toc-wrapper
+  .monaco-list-rows
+  .monaco-list-row::before {
+  left: 7px !important;
+  width: 3.5px !important;
+}
+.settings-editor
+  .settings-body
+  .settings-tree-container
+  .monaco-list-rows
+  .monaco-list-row::before {
+  display: none !important;
+}
+.editor-widget.suggest-widget .monaco-list-rows .monaco-list-row {
+  padding-left: 10px !important;
+}
+.editor-widget.suggest-widget .monaco-list-rows .monaco-list-row::before {
+  left: 6px !important;
+}
+.extension-editor
+  .subcontent.feature-contributions
+  .features-list-container
+  > .features-list-wrapper
+  .monaco-list-row.extension-feature-list-item::before {
+  left: 4px !important;
+}
+.part.editor
+  .content
+  .editor-container
+  .editor-instance
+  .keybindings-editor
+  .keybindings-table-container
+  .monaco-list-row::before {
+  display: none !important;
+}

@@ -1,0 +1,1087 @@
+# ========================================
+# VSCode Theme Configuration
+# ========================================
+
+# Color Palette
+colors:
+  # Backgrounds
+  bg-primary: '#171717'
+  bg-primary-transparent: '#171717FE'
+  bg-secondary: '#272727'
+  bg-tertiary: '#474747'
+  bg-tertiary-transparent: '#47474700'
+  bg-selection: '#000001'
+  bg-muted: '#888888fe'
+  bg-transparent: '#00000100'
+
+  # Foregrounds
+  fg-primary: '#dddddd'
+  fg-secondary: '#bbbbbb'
+  fg-muted: '#888888'
+  fg-on-accent: '#000000'
+
+  # Accent (with opacity variants)
+  # Petrol Blue '#1b8bbd'
+  # Slate Blue '#5f7d8c'
+  # Cool Mint Green '#3fd6b6'
+  # Glacier Blue '#6dd3ff'
+  # Sage Green '#8fb8a6'
+  # Pine Green '#1f8a70'
+  # Blue Violet '#7a6cff'
+  # Deep Indigo '#4f46e5'
+  # Cool Lavender '#a78bfa'
+  # Amber Orange '#ff9f1c'
+  # Muted Copper '#c08457'
+  # Dark Raspberry '#c0266d'
+  # Old Gold '#b8963e'
+  accent: '#c08457'
+  accent-hover: '#c08457ee'
+  accent-muted: '#c08457cc'
+  accent-subtle: '#c08457aa'
+  accent-faint: '#c0845788'
+  accent-dim: '#c0845766'
+  accent-ghost: '#c0845744'
+  accent-hint: '#c0845733'
+  accent-trace: '#c0845722'
+  accent-transparent: '#c0845700'
+  accent-smoke: '#c08457dd'
+
+  # Semantic - Error
+  error: '#ff3377'
+  error-muted: '#ff3377bb'
+  error-hover: '#ff3377dd'
+  error-subtle: '#ff337788'
+  error-faint: '#ff337744'
+  error-dim: '#ff337733'
+  error-ghost: '#ff337722'
+  error-transparent: '#ff337700'
+
+  # Semantic - Warning
+  warning: '#eebb11'
+  warning-muted: '#eebb11bb'
+  warning-hover: '#eebb11dd'
+  warning-subtle: '#eebb1188'
+  warning-faint: '#eebb1144'
+  warning-transparent: '#eebb1100'
+
+  # Semantic - Success
+  success: '#22cc33'
+  success-muted: '#22cc3388'
+  success-faint: '#22cc3333'
+  success-ghost: '#22cc3322'
+  success-subtle: '#22cc33bb'
+  success-transparent: '#22cc3300'
+
+  # Semantic - Info
+  info: '#0e80c0'
+  info-muted: '#0e80c0bb'
+  info-faint: '#0e80c044'
+  info-ghost: '#0e80c022'
+  info-transparent: '#0e80c000'
+
+  # Charts
+  charts-red: '#ff3377'
+  charts-blue: '#0e80c0'
+  charts-yellow: '#eebb11'
+  charts-orange: '#ff5500'
+  charts-green: '#22cc33'
+  charts-purple: '#7733ff'
+
+  # Other
+  orange: '#ff5500'
+  purple: '#7733ff'
+  cyan: '#11cc99'
+  opacity75: '#000000c0'
+  shadow: '#47474700'
+
+# ========================================
+# Color Customizations Mapping
+# Format: "vscode.property": "color-name"
+# ========================================
+
+mappings:
+  # ACTION BAR (the top bar with menu items like File, Edit, Selection, etc.)
+  actionBar.toggledBackground: bg-tertiary
+
+  # ACTIVITY BAR (the vertical bar on the far left, with icons for Explorer, Search, Git, etc.)
+  # May have no effect if using other locations for activity bar (e.g., top)
+  activityBar.background: bg-primary
+  activityBar.foreground: accent
+  activityBar.inactiveForeground: fg-muted
+  activityBar.border: bg-primary
+  activityBar.activeBorder: accent-transparent
+  activityBar.activeBackground: bg-primary
+  activityBar.activeFocusBorder: accent-transparent
+  activityBar.dropBorder: accent
+
+  # ACTIVITY BAR TOP
+  # If "workbench.activityBar.location" is set to "top", these settings will take effect.
+  activityBarTop.foreground: accent
+  activityBarTop.activeBorder: accent-transparent
+  activityBarTop.inactiveForeground: fg-secondary
+  activityBarTop.dropBorder: accent
+  activityBarTop.background: bg-primary
+  activityBarTop.activeBackground: bg-primary
+
+  # ACTIVITY BAR BADGE (e.g., unsaved files count, extensions available updates count...)
+  activityBarBadge.background: accent
+  activityBarBadge.foreground: fg-on-accent
+
+  # ACTIVITY PROBLEM/ERRORS BADGES (e.g., Git errors/warnings count...)
+  activityWarningBadge.foreground: fg-on-accent
+  activityWarningBadge.background: warning
+  activityErrorBadge.foreground: fg-on-accent
+  activityErrorBadge.background: error
+
+  # BADGE (e.g., search results count, debug call stack frame count...)
+  badge.foreground: fg-on-accent
+  badge.background: accent-muted
+
+  # BANNER
+  banner.background: bg-secondary
+  banner.foreground: accent
+  banner.iconForeground: accent
+
+  # BREADCRUMBS (the navigation bar above the editor area)
+  breadcrumb.foreground: fg-muted
+  breadcrumb.background: bg-primary
+  breadcrumb.focusForeground: accent
+  breadcrumb.activeSelectionForeground: accent
+  breadcrumbPicker.background: bg-secondary
+
+  # BUTTONS (e.g., in dialogs, notification toasts, run and debug window...)
+  button.background: accent-muted
+  button.foreground: fg-on-accent
+  button.border: accent
+  button.separator: fg-on-accent
+  button.hoverBackground: accent-hover
+  button.secondaryForeground: fg-on-accent
+  button.secondaryBackground: accent-subtle
+  button.secondaryHoverBackground: accent-muted
+
+  # CHARTS (e.g., in extensions like Git Graph)
+  charts.foreground: fg-primary
+  charts.lines: bg-tertiary
+  chart.line: bg-tertiary
+  chart.axis: fg-secondary
+  chart.guide: fg-muted
+  charts.red: charts-red
+  charts.blue: charts-blue
+  charts.yellow: charts-yellow
+  charts.orange: charts-orange
+  charts.green: charts-green
+  charts.purple: charts-purple
+
+  # CHECKBOXES (e.g., in dialogs, notification toasts, run and debug window...)
+  checkbox.background: bg-secondary
+  checkbox.foreground: accent
+  checkbox.border: bg-tertiary
+  checkbox.selectBackground: accent-muted
+  checkbox.selectBorder: accent
+
+  # COMMAND CENTER
+  commandCenter.foreground: fg-secondary
+  commandCenter.activeForeground: accent
+  commandCenter.background: bg-primary
+  commandCenter.activeBackground: bg-secondary
+  commandCenter.border: accent-transparent
+  commandCenter.inactiveForeground: fg-secondary
+  commandCenter.inactiveBorder: accent-transparent
+  commandCenter.activeBorder: accent-transparent
+  commandCenter.debuggingBackground: bg-primary-transparent
+
+  # COMMENTS
+  commentsView.resolvedIcon: accent-muted
+  commentsView.unresolvedIcon: accent-muted
+
+  # CHATS (e.g., ChatGPT, Claude Code)
+  chat.requestBorder: bg-tertiary
+  chat.requestBackground: accent-muted
+  chat.slashCommandBackground: accent-muted
+  chat.slashCommandForeground: accent-muted
+  chat.avatarBackground: accent
+  chat.avatarForeground: fg-on-accent
+  chat.editedFileForeground: accent-muted
+
+  # DEBUG COLORS (in the debug toolbar and debug view)
+  debugToolBar.background: bg-secondary
+  debugToolBar.border: bg-tertiary
+
+  debugView.exceptionLabelForeground: fg-on-accent
+  debugView.exceptionLabelBackground: accent-smoke
+  debugView.stateLabelForeground: fg-on-accent
+  debugView.stateLabelBackground: accent-smoke
+  debugView.valueChangedHighlight: accent-trace
+
+  debugTokenExpression.name: info
+  debugTokenExpression.value: purple
+  debugTokenExpression.string: success
+  debugTokenExpression.boolean: purple
+  debugTokenExpression.number: purple
+  debugTokenExpression.error: error-muted
+  debugTokenExpression.type: purple
+
+  # DEBUG ICONS (in the debug toolbar and debug view)
+  debugIcon.breakpointForeground: error
+  debugIcon.breakpointDisabledForeground: error-muted
+  debugIcon.breakpointUnverifiedForeground: error
+  debugIcon.breakpointCurrentStackframeForeground: orange
+  debugIcon.breakpointStackframeForeground: orange
+  debugIcon.startForeground: success
+  debugIcon.pauseForeground: orange
+  debugIcon.stopForeground: error
+  debugIcon.disconnectForeground: orange
+  debugIcon.restartForeground: success
+  debugIcon.stepOverForeground: info
+  debugIcon.stepIntoForeground: info
+  debugIcon.stepOutForeground: info
+  debugIcon.continueForeground: success
+  debugIcon.stepBackForeground: info
+
+  debugConsole.infoForeground: info
+  debugConsole.warningForeground: warning
+  debugConsole.errorForeground: error
+  debugConsole.sourceForeground: accent
+  debugConsoleInputIcon.foreground: accent
+
+  # DEBUG EDITOR HIGHLIGHTS (in the editor area during debugging)
+  editor.stackFrameHighlightBackground: accent-trace
+  editor.focusedStackFrameHighlightBackground: accent-trace
+  editor.inlineValuesForeground: fg-primary
+  editor.inlineValuesBackground: accent-trace
+
+  # DIFF EDITOR (in the editor area when comparing files)
+  diffEditor.insertedTextBackground: success-ghost
+  diffEditor.insertedTextBorder: success-transparent
+  diffEditor.removedTextBackground: error-ghost
+  diffEditor.removedTextBorder: error-transparent
+  diffEditor.border: accent-faint
+  diffEditor.diagonalFill: bg-tertiary
+  diffEditor.insertedLineBackground: success-ghost
+  diffEditor.removedLineBackground: error-ghost
+  diffEditorGutter.insertedLineBackground: success-ghost
+  diffEditorGutter.removedLineBackground: error-ghost
+  diffEditorOverview.insertedForeground: success-ghost
+  diffEditorOverview.removedForeground: error-ghost
+  diffEditor.unchangedRegionBackground: bg-primary
+  diffEditor.unchangedRegionForeground: fg-muted
+  diffEditor.unchangedRegionShadow: bg-tertiary
+  diffEditor.unchangedCodeBackground: bg-secondary
+  diffEditor.move.border: accent-transparent
+  diffEditor.moveActive.border: accent
+
+  multiDiffEditor.headerBackground: bg-secondary
+  multiDiffEditor.background: bg-primary
+  multiDiffEditor.border: bg-tertiary
+
+  # DROPDOWNS
+  dropdown.background: bg-secondary
+  dropdown.listBackground: bg-secondary
+  dropdown.border: bg-tertiary
+  dropdown.foreground: fg-primary
+
+  ###################################################
+  # EDITOR (the main code editing area)
+  ###################################################
+  # Basic Editor Colors
+  editor.background: bg-primary
+  editor.foreground: fg-primary
+
+  # Miscellaneous Editor Colors
+  editorActionList.focusBackground: accent-faint
+  editor.placeholder.foreground: fg-muted
+  editor.compositionBorder: accent
+  editor.inactiveSelectionBackground: accent-trace
+  editor.hoverHighlightBackground: accent-trace
+  editor.linkedEditingBackground: accent-hint
+  editorCodeLens.foreground: accent-faint
+  editorRuler.foreground: fg-muted
+  editorWatermark.foreground: fg-primary
+  editorLink.activeForeground: accent
+  editorWhitespace.foreground: accent
+  editorLightBulb.foreground: accent
+  editorLightBulbAutoFix.foreground: accent
+  editorLightBulbAi.foreground: accent
+
+  # Find/Selection Colors (the highlighted search results in the editor)
+  editor.findMatchBackground: accent-faint
+  editor.findMatchBorder: accent-transparent
+  editor.findMatchHighlightBackground: accent-hint
+  editor.findMatchHighlightBorder: accent-transparent
+
+  # Range Highlight Colors (the highlighted ranges in the editor, e.g., when using "Find All")
+  editor.findRangeHighlightBackground: accent-trace
+  editor.findRangeHighlightBorder: accent-transparent
+  editor.rangeHighlightBackground: accent-transparent
+  editor.rangeHighlightBorder: accent-transparent
+
+  # Cursor/Line Highlight Colors (the line where the cursor is located)
+  editor.lineHighlightBackground: accent-trace
+  editor.lineHighlightBorder: accent-transparent
+
+  # Selection Colors (the selected text in the editor)
+  editor.selectionBackground: accent-dim
+  editor.selectionForeground: fg-primary
+  editor.selectionHighlightBackground: accent-trace
+  editor.selectionHighlightBorder: accent-transparent
+
+  # Folded Code Colors (the collapsed code regions)
+  editor.foldBackground: accent-trace
+  editor.foldPlaceholderForeground: accent
+
+  # Symbol Highlight Colors (the highlighting of all occurrences of a symbol)
+  editor.symbolHighlightBackground: accent-hint
+  editor.symbolHighlightBorder: accent-transparent
+
+  # Line Number Colors (the gutter with line numbers)
+  editorLineNumber.foreground: fg-muted
+  editorLineNumber.activeForeground: accent
+  editorLineNumber.dimmedForeground: accent-faint
+
+  # Cursor Colors (the blinking cursor in the editor)
+  editorCursor.background: bg-primary
+  editorCursor.foreground: accent
+
+  # Multi-Cursor Colors (the additional cursors when using multi-cursor editing)
+  editorMultiCursor.primary.foreground: accent
+  editorMultiCursor.primary.background: accent
+  editorMultiCursor.secondary.foreground: accent
+  editorMultiCursor.secondary.background: accent
+
+  # Bracket Match Colors (the highlighting of matching brackets)
+  editorBracketMatch.background: accent-transparent
+
+  # Search Colors (in the editor search widget)
+  search.resultsInfoForeground: accent
+  searchEditor.findMatchBackground: accent-faint
+  searchEditor.findMatchBorder: accent-transparent
+  searchEditor.textInputBorder: bg-tertiary
+
+  # Unicode Highlight Colors (for unusual or non-standard Unicode characters)
+  editorUnicodeHighlight.background: accent-hint
+  editorUnicodeHighlight.border: accent-transparent
+
+  # Indent Guide Colors (the vertical lines indicating indentation levels)
+  editorIndentGuide.background2: accent-dim
+  editorIndentGuide.background1: accent-dim
+  editorIndentGuide.background3: accent-dim
+  editorIndentGuide.background4: accent-dim
+  editorIndentGuide.background5: accent-dim
+  editorIndentGuide.background6: accent-dim
+  editorIndentGuide.activeBackground1: accent
+  editorIndentGuide.activeBackground2: accent
+  editorIndentGuide.activeBackground3: accent
+  editorIndentGuide.activeBackground4: accent
+  editorIndentGuide.activeBackground5: accent
+  editorIndentGuide.activeBackground6: accent
+
+  # Error/Warning/Info Colors
+  editorError.foreground: error-muted
+  editorError.border: error-transparent
+  editorError.background: error-faint
+  editorWarning.foreground: warning-muted
+  editorWarning.border: warning-transparent
+  editorWarning.background: warning-faint
+  editorInfo.foreground: info-muted
+  editorInfo.border: info-transparent
+  editorInfo.background: info-faint
+  editorHint.foreground: success-subtle
+  editorHint.border: success-transparent
+  problemsErrorIcon.foreground: error
+  problemsWarningIcon.foreground: warning
+  problemsInfoIcon.foreground: info
+
+  # Unnecessary Code Colors (inactive or dead code)
+  editorUnnecessaryCode.border: bg-tertiary-transparent
+  editorUnnecessaryCode.opacity: opacity75
+
+  # Editor Overview Ruler Colors (the vertical minimap on the right side of the editor)
+  editorOverviewRuler.background: bg-primary
+  editorOverviewRuler.border: bg-primary
+  editorOverviewRuler.findMatchForeground: accent
+  editorOverviewRuler.rangeHighlightForeground: accent
+  editorOverviewRuler.selectionHighlightForeground: accent
+  editorOverviewRuler.wordHighlightForeground: accent
+  editorOverviewRuler.wordHighlightStrongForeground: accent
+  editorOverviewRuler.wordHighlightTextForeground: accent
+  editorOverviewRuler.modifiedForeground: info
+  editorOverviewRuler.addedForeground: success
+  editorOverviewRuler.deletedForeground: error-muted
+  editorOverviewRuler.errorForeground: error
+  editorOverviewRuler.warningForeground: warning
+  editorOverviewRuler.infoForeground: info
+  editorOverviewRuler.bracketMatchForeground: accent
+  editorOverviewRuler.inlineChatInserted: accent-muted
+  editorOverviewRuler.inlineChatRemoved: error-muted
+
+  # Editor Gutter Colors (the area with line numbers, breakpoints, etc.)
+  editorGutter.background: bg-primary
+  editorGutter.modifiedBackground: info
+  editorGutter.addedBackground: success
+  editorGutter.deletedBackground: error-muted
+  editorGutter.commentRangeForeground: success
+  editorGutter.commentGlyphForeground: fg-primary
+  editorGutter.commentUnresolvedGlyphForeground: fg-primary
+  editorGutter.foldingControlForeground: accent
+  editorGutter.itemGlyphForeground: fg-primary
+  editorGutter.itemBackground: success
+
+  # Editor Inline Edit Colors (for inline code actions)
+  # Gutter indicators (left side)
+  inlineEdit.gutterIndicator.primaryBorder: accent
+  inlineEdit.gutterIndicator.primaryForeground: accent
+  inlineEdit.gutterIndicator.primaryBackground: accent-trace
+  inlineEdit.gutterIndicator.secondaryBorder: accent-subtle
+  inlineEdit.gutterIndicator.secondaryForeground: accent-subtle
+  inlineEdit.gutterIndicator.secondaryBackground: accent-trace
+  inlineEdit.gutterIndicator.successfulBorder: success
+  inlineEdit.gutterIndicator.successfulForeground: success
+  inlineEdit.gutterIndicator.successfulBackground: success-ghost
+  inlineEdit.gutterIndicator.background: bg-primary
+  # Inline editor backgrounds
+  inlineEdit.originalBackground: bg-secondary
+  inlineEdit.modifiedBackground: bg-primary
+  # Changed lines (full line highlight)
+  inlineEdit.originalChangedLineBackground: error-ghost
+  inlineEdit.modifiedChangedLineBackground: accent-trace
+  # Changed text only
+  inlineEdit.originalChangedTextBackground: error-faint
+  inlineEdit.modifiedChangedTextBackground: accent-ghost
+  # Borders around inline blocks
+  inlineEdit.originalBorder: error
+  inlineEdit.modifiedBorder: accent
+  # Tab preview (will accept)
+  inlineEdit.tabWillAcceptOriginalBorder: error-muted
+  inlineEdit.tabWillAcceptModifiedBorder: accent-muted
+
+  # Editor Inlay Hints Colors
+  editorInlayHint.background: accent-hint
+  editorInlayHint.foreground: fg-muted
+  editorInlayHint.typeBackground: accent-hint
+  editorInlayHint.typeForeground: fg-muted
+  editorInlayHint.parameterBackground: accent-hint
+  editorInlayHint.parameterForeground: fg-muted
+
+  # Editor Group and pane colors
+  editorGroup.border: accent-trace
+  editorGroup.dropBackground: accent-ghost
+  editorGroupHeader.noTabsBackground: bg-primary
+  editorGroupHeader.tabsBackground: bg-primary
+  editorGroupHeader.tabsBorder: bg-primary
+  editorGroupHeader.border: bg-primary
+  editorGroup.emptyBackground: bg-primary
+  editorGroup.focusedEmptyBorder: accent
+  editorGroup.dropIntoPromptForeground: accent
+  editorGroup.dropIntoPromptBackground: bg-secondary
+  editorGroup.dropIntoPromptBorder: bg-tertiary
+  editorPane.background: bg-primary
+  sideBySideEditor.horizontalBorder: accent-transparent
+  sideBySideEditor.verticalBorder: accent-transparent
+
+  # Editor Comment Widgets Colors
+  editorCommentsWidget.resolvedBorder: accent
+  editorCommentsWidget.unresolvedBorder: error
+  editorCommentsWidget.rangeBackground: accent-ghost
+  editorCommentsWidget.rangeActiveBackground: accent-dim
+  editorCommentsWidget.replyInputBackground: bg-secondary
+
+  # Editor Widgets Colors
+  editorWidget.foreground: fg-primary
+  editorWidget.background: bg-secondary
+  editorWidget.border: bg-tertiary
+  editorWidget.resizeBorder: accent
+  editorSuggestWidget.background: bg-secondary
+  editorSuggestWidget.border: bg-tertiary
+  editorSuggestWidget.foreground: fg-primary
+  editorSuggestWidget.focusHighlightForeground: accent
+  editorSuggestWidget.highlightForeground: accent
+  editorSuggestWidget.selectedBackground: bg-selection
+  editorSuggestWidget.selectedForeground: fg-primary
+  editorSuggestWidget.selectedIconForeground: accent
+  editorSuggestWidgetStatus.foreground: fg-muted
+  editorHoverWidget.foreground: fg-primary
+  editorHoverWidget.background: bg-secondary
+  editorHoverWidget.border: bg-tertiary
+  editorHoverWidget.highlightForeground: accent
+  editorHoverWidget.statusBarBackground: bg-secondary
+  editorGhostText.border: accent-transparent
+  editorGhostText.background: accent-hint
+  editorGhostText.foreground: fg-muted
+  editorStickyScroll.background: bg-primary
+  editorStickyScroll.border: bg-tertiary
+  editorStickyScroll.shadow: shadow
+  editorStickyScrollHover.background: accent-trace
+  debugExceptionWidget.background: bg-secondary
+  debugExceptionWidget.border: bg-tertiary
+  editorMarkerNavigation.background: bg-secondary
+  editorMarkerNavigationError.background: error
+  editorMarkerNavigationWarning.background: warning
+  editorMarkerNavigationInfo.background: info
+  editorMarkerNavigationError.headerBackground: error-faint
+  editorMarkerNavigationWarning.headerBackground: warning-faint
+  editorMarkerNavigationInfo.headerBackground: info-faint
+
+  # Extension Editor Colors
+  extensionButton.prominentForeground: fg-on-accent
+  extensionButton.prominentBackground: accent-muted
+  extensionButton.prominentHoverBackground: accent
+  extensionButton.background: accent-muted
+  extensionButton.foreground: fg-on-accent
+  extensionButton.hoverBackground: accent
+  extensionButton.separator: fg-on-accent
+  extensionBadge.remoteBackground: accent
+  extensionBadge.remoteForeground: fg-on-accent
+  extensionIcon.preReleaseForeground: purple
+  extensionIcon.starForeground: warning
+  extensionIcon.verifiedForeground: info
+  extensionIcon.sponsorForeground: error
+  extensionIcon.privateForeground: orange
+
+  #############################################
+  ## EDITOR END SECTION
+  #############################################
+
+  # GAUGE
+  gauge.background: accent
+  gauge.foreground: bg-tertiary
+  gauge.border: bg-tertiary
+  gauge.warningBackground: warning
+  gauge.warningForeground: fg-on-accent
+  gauge.errorBackground: error
+  gauge.errorForeground: fg-on-accent
+
+  # GIT
+  gitDecoration.deletedResourceForeground: error
+  gitDecoration.stageDeletedResourceForeground: error
+  gitDecoration.conflictingResourceForeground: orange
+  gitDecoration.modifiedResourceForeground: warning
+  gitDecoration.stageModifiedResourceForeground: warning
+  gitDecoration.addedResourceForeground: success
+  gitDecoration.ignoredResourceForeground: info
+  gitDecoration.submoduleResourceForeground: info
+  gitDecoration.renamedResourceForeground: cyan
+  gitDecoration.untrackedResourceForeground: purple
+  git.blame.editorDecorationForeground: fg-muted
+
+  # INLINE CHAT
+  inlineChat.background: bg-secondary
+  inlineChat.foreground: fg-primary
+  inlineChat.border: bg-tertiary
+  inlineChat.shadow: bg-tertiary
+  inlineChatInput.border: bg-tertiary
+  inlineChatInput.focusBorder: accent
+  inlineChatInput.placeholderForeground: fg-muted
+  inlineChatInput.background: bg-primary
+  inlineChatDiff.inserted: accent-muted
+  inlineChatDiff.removed: error-muted
+
+  # INPUTS
+  input.background: bg-secondary
+  input.border: bg-tertiary
+  input.foreground: fg-primary
+  input.placeholderForeground: fg-muted
+  inputOption.activeBackground: accent-muted
+  inputOption.activeBorder: accent-muted
+  inputOption.activeForeground: fg-on-accent
+  inputOption.hoverBackground: bg-tertiary
+  inputValidation.errorBackground: error-faint
+  inputValidation.errorForeground: fg-on-accent
+  inputValidation.errorBorder: error
+  inputValidation.infoBackground: info-faint
+  inputValidation.infoForeground: fg-on-accent
+  inputValidation.infoBorder: warning
+  inputValidation.warningBackground: warning-faint
+  inputValidation.warningForeground: fg-on-accent
+  inputValidation.warningBorder: warning
+
+  # KEYBINDING LABELS
+  keybindingLabel.background: bg-tertiary
+  keybindingLabel.foreground: fg-primary
+  keybindingLabel.border: bg-tertiary-transparent
+  keybindingLabel.bottomBorder: bg-tertiary
+
+  # LISTS & TREES
+  list.activeSelectionBackground: bg-selection
+  list.activeSelectionForeground: accent
+  list.activeSelectionIconForeground: accent
+  list.dropBackground: accent-ghost
+  list.focusBackground: bg-selection
+  list.focusForeground: accent
+  list.focusHighlightForeground: accent
+  list.focusOutline: bg-transparent
+  list.focusAndSelectionOutline: bg-transparent
+  list.highlightForeground: accent
+  list.hoverBackground: bg-selection
+  list.hoverForeground: accent
+  list.inactiveSelectionBackground: bg-selection
+  list.inactiveSelectionForeground: accent
+  list.inactiveSelectionIconForeground: accent
+  list.inactiveFocusBackground: bg-selection
+  list.inactiveFocusOutline: bg-transparent
+  list.invalidItemForeground: orange
+  list.errorForeground: error
+  list.warningForeground: warning
+  listFilterWidget.background: bg-secondary
+  listFilterWidget.outline: bg-transparent
+  listFilterWidget.noMatchesOutline: error
+  listFilterWidget.shadow: bg-secondary
+  list.filterMatchBackground: accent-faint
+  list.filterMatchBorder: accent-transparent
+  list.deemphasizedForeground: accent
+  list.dropBetweenBackground: accent
+  tree.indentGuidesStroke: accent
+  tree.inactiveIndentGuidesStroke: accent-dim
+  tree.tableColumnsBorder: bg-tertiary
+  tree.tableOddRowsBackground: bg-secondary
+
+  # MENU BAR
+  menubar.selectionForeground: accent
+  menubar.selectionBackground: bg-secondary
+  menubar.selectionBorder: bg-secondary
+  menu.foreground: fg-primary
+  menu.background: bg-secondary
+  menu.selectionForeground: accent
+  menu.selectionBackground: bg-selection
+  menu.selectionBorder: bg-selection
+  menu.separatorBackground: accent
+  menu.border: bg-tertiary
+
+  # MERGE CONFLICTS
+  merge.currentHeaderBackground: error-dim
+  merge.currentContentBackground: error-dim
+  merge.incomingHeaderBackground: success-faint
+  merge.incomingContentBackground: success-faint
+  merge.border: bg-tertiary
+  merge.commonContentBackground: bg-muted
+  merge.commonHeaderBackground: bg-muted
+  editorOverviewRuler.currentContentForeground: error
+  editorOverviewRuler.incomingContentForeground: success
+  editorOverviewRuler.commonContentForeground: fg-muted
+  editorOverviewRuler.commentForeground: accent
+  editorOverviewRuler.commentUnresolvedForeground: error
+  mergeEditor.change.background: error-ghost
+  mergeEditor.change.word.background: error-faint
+  mergeEditor.conflict.unhandledUnfocused.border: error
+  mergeEditor.conflict.unhandledFocused.border: error
+  mergeEditor.conflict.unhandled.minimapOverViewRuler: error
+  mergeEditor.conflict.handledUnfocused.border: success
+  mergeEditor.conflict.handledFocused.border: success
+  mergeEditor.conflict.handled.minimapOverViewRuler: success
+  mergeEditor.conflictingLines.background: orange
+  mergeEditor.changeBase.background: bg-secondary
+  mergeEditor.changeBase.word.background: bg-secondary
+  mergeEditor.conflict.input1.background: success-ghost
+  mergeEditor.conflict.input2.background: error-ghost
+
+  # MISCELLANEOUS
+  focusBorder: bg-transparent
+  foreground: fg-primary
+  disabledForeground: fg-muted
+  widget.border: bg-tertiary
+  widget.shadow: shadow
+  selection.background: accent-dim
+  descriptionForeground: fg-secondary
+  errorForeground: error
+  icon.foreground: accent
+  sash.hoverBorder: accent-muted
+
+  # NOTEBOOK
+  notebook.editorBackground: bg-primary
+  notebook.cellBorderColor: bg-tertiary
+  notebook.cellHoverBackground: bg-secondary
+  notebook.cellInsertionIndicator: accent
+  notebook.cellStatusBarItemHoverBackground: bg-secondary
+  notebook.cellToolbarSeparator: accent-transparent
+  notebook.cellEditorBackground: bg-primary
+  notebook.focusedCellBackground: bg-secondary
+  notebook.focusedCellBorder: bg-tertiary
+  notebook.focusedEditorBorder: accent
+  notebook.inactiveFocusedCellBorder: bg-tertiary
+  notebook.inactiveSelectedCellBorder: bg-tertiary
+  notebook.outputContainerBackgroundColor: bg-secondary
+  notebook.outputContainerBorderColor: bg-tertiary
+  notebook.selectedCellBackground: bg-secondary
+  notebook.selectedCellBorder: bg-tertiary
+  notebook.symbolHighlightBackground: accent-hint
+  notebookScrollbarSlider.activeBackground: accent-faint
+  notebookScrollbarSlider.background: accent-ghost
+  notebookScrollbarSlider.hoverBackground: accent-dim
+  notebookStatusErrorIcon.foreground: error
+  notebookStatusRunningIcon.foreground: success
+  notebookStatusSuccessIcon.foreground: success
+  notebookEditorOverviewRuler.runningCellForeground: success
+
+  # NOTIFICATIONS
+  notificationCenter.border: bg-tertiary
+  notificationCenterHeader.foreground: accent
+  notificationCenterHeader.background: bg-secondary
+  notificationToast.border: bg-tertiary
+  notifications.foreground: fg-primary
+  notifications.background: bg-secondary
+  notifications.border: accent
+  notificationLink.foreground: accent
+  notificationsErrorIcon.foreground: error
+  notificationsWarningIcon.foreground: warning
+  notificationsInfoIcon.foreground: info
+
+  # PANEL
+  panel.background: bg-primary
+  panel.border: accent
+  panel.dropBorder: accent
+  panelTitle.activeBorder: accent
+  panelTitle.activeForeground: accent
+  panelTitle.inactiveForeground: fg-primary
+  panelTitle.border: accent-transparent
+  panelTitleBadge.background: accent
+  panelTitleBadge.foreground: fg-on-accent
+  panelInput.border: bg-tertiary
+  panelSection.border: accent
+  panelSection.dropBackground: accent-ghost
+  panelSectionHeader.background: bg-secondary
+  panelSectionHeader.foreground: accent
+  panelStickyScroll.background: bg-primary
+  panelStickyScroll.border: bg-tertiary
+  panelStickyScroll.shadow: bg-tertiary-transparent
+  panelSectionHeader.border: accent
+  outputView.background: bg-primary
+  outputViewStickyScroll.background: bg-primary
+
+  # PANEL CHAT
+  interactive.activeCodeBorder: accent
+  interactive.inactiveCodeBorder: bg-tertiary
+
+  # PEEK VIEWER
+  peekView.border: accent-muted
+  peekViewEditor.background: bg-secondary
+  peekViewEditorGutter.background: bg-secondary
+  peekViewEditor.matchHighlightBackground: accent-hint
+  peekViewEditor.matchHighlightBorder: accent-transparent
+  peekViewResult.background: bg-secondary
+  peekViewResult.fileForeground: fg-primary
+  peekViewResult.lineForeground: fg-secondary
+  peekViewResult.matchHighlightBackground: accent-hint
+  peekViewResult.selectionBackground: bg-selection
+  peekViewResult.selectionForeground: accent
+  peekViewTitle.background: bg-secondary
+  peekViewTitleDescription.foreground: fg-secondary
+  peekViewTitleLabel.foreground: fg-primary
+  peekViewEditorStickyScroll.background: bg-secondary
+
+  # PICKER
+  pickerGroup.border: accent
+  pickerGroup.foreground: accent
+  quickInput.background: bg-secondary
+  quickInput.foreground: fg-primary
+  quickInputList.focusBackground: bg-selection
+  quickInputList.focusForeground: accent
+  quickInputList.focusIconForeground: accent
+  quickInputTitle.background: bg-secondary
+
+  # PORTS
+  ports.iconRunningProcessForeground: success
+
+  # PROGRESS BAR
+  progressBar.background: accent
+
+  # PROFILE BADGE
+  profileBadge.background: accent
+  profileBadge.foreground: fg-on-accent
+  profiles.sashBorder: accent
+
+  # RADIO BUTTONS
+  radio.activeForeground: accent
+  radio.activeBackground: bg-secondary
+  radio.activeBorder: accent
+  radio.inactiveForeground: fg-muted
+  radio.inactiveBackground: bg-secondary
+  radio.inactiveBorder: bg-tertiary
+  radio.inactiveHoverBackground: bg-tertiary
+
+  # SCROLLBAR
+  scrollbar.shadow: shadow
+  scrollbarSlider.background: accent-ghost
+  scrollbarSlider.hoverBackground: accent-dim
+  scrollbarSlider.activeBackground: accent-faint
+
+  # SETTINGS
+  settings.headerForeground: accent
+  settings.modifiedItemIndicator: accent
+  settings.dropdownBackground: bg-secondary
+  settings.dropdownForeground: fg-primary
+  settings.dropdownBorder: bg-tertiary
+  settings.dropdownListBorder: bg-tertiary
+  settings.checkboxBackground: bg-secondary
+  settings.checkboxForeground: accent
+  settings.checkboxBorder: bg-tertiary
+  settings.rowHoverBackground: bg-transparent
+  settings.textInputBackground: bg-secondary
+  settings.textInputForeground: fg-primary
+  settings.textInputBorder: bg-tertiary
+  settings.numberInputBackground: bg-secondary
+  settings.numberInputForeground: fg-primary
+  settings.numberInputBorder: bg-tertiary
+  settings.focusedRowBackground: bg-transparent
+  settings.focusedRowBorder: accent-transparent
+  settings.headerBorder: accent-transparent
+  settings.sashBorder: accent
+  settings.settingsHeaderHoverForeground: accent
+
+  # SIDEBAR
+  sideBar.background: bg-primary
+  sideBar.foreground: fg-secondary
+  sideBar.border: bg-primary
+  sideBar.dropBackground: accent-ghost
+  sideBarTitle.foreground: accent
+  sideBarSectionHeader.background: bg-primary
+  sideBarSectionHeader.foreground: accent
+  sideBarSectionHeader.border: accent-transparent
+  sideBarActivityBarTop.border: bg-primary
+  sideBarTitle.background: bg-primary
+  sideBarTitle.border: bg-primary
+  sideBarStickyScroll.background: bg-primary
+  sideBarStickyScroll.border: bg-tertiary
+  sideBarStickyScroll.shadow: bg-tertiary-transparent
+
+  # SIMPLE FIND WIDGET
+  simpleFindWidget.sashBorder: accent
+
+  # SNIPPETS
+  editor.snippetTabstopHighlightBackground: accent-hint
+  editor.snippetTabstopHighlightBorder: accent-transparent
+  editor.snippetFinalTabstopHighlightBackground: bg-secondary
+  editor.snippetFinalTabstopHighlightBorder: accent-transparent
+
+  # SOURCE CONTROL GRAPH
+  scmGraph.historyItemHoverLabelForeground: fg-on-accent
+  scmGraph.foreground1: orange
+  scmGraph.foreground2: error
+  scmGraph.foreground3: warning
+  scmGraph.foreground4: success
+  scmGraph.foreground5: purple
+  scmGraph.historyItemHoverAdditionsForeground: success
+  scmGraph.historyItemHoverDeletionsForeground: error
+  scmGraph.historyItemRefColor: accent
+  scmGraph.historyItemRemoteRefColor: accent
+  scmGraph.historyItemBaseRefColor: cyan
+  scmGraph.historyItemHoverDefaultLabelForeground: fg-on-accent
+  scmGraph.historyItemHoverDefaultLabelBackground: accent
+
+  # STATUS BAR
+  statusBar.background: bg-primary
+  statusBar.foreground: fg-secondary
+  statusBar.border: accent-transparent
+  statusBar.debuggingBackground: bg-primary
+  statusBar.debuggingForeground: fg-secondary
+  statusBar.debuggingBorder: accent-transparent
+  statusBar.noFolderForeground: fg-secondary
+  statusBar.noFolderBackground: bg-primary
+  statusBar.noFolderBorder: accent-transparent
+  statusBar.focusBorder: bg-primary
+  statusBarItem.hoverForeground: accent
+  statusBarItem.hoverBackground: bg-secondary
+  statusBarItem.activeBackground: bg-tertiary
+  statusBarItem.prominentForeground: fg-on-accent
+  statusBarItem.prominentBackground: accent-transparent
+  statusBarItem.prominentHoverForeground: fg-on-accent
+  statusBarItem.prominentHoverBackground: accent
+  statusBarItem.remoteBackground: bg-primary
+  statusBarItem.remoteForeground: accent
+  statusBarItem.remoteHoverBackground: accent
+  statusBarItem.remoteHoverForeground: fg-on-accent
+  statusBarItem.errorBackground: error-muted
+  statusBarItem.errorForeground: fg-on-accent
+  statusBarItem.errorHoverBackground: error-hover
+  statusBarItem.errorHoverForeground: fg-on-accent
+  statusBarItem.warningBackground: warning-muted
+  statusBarItem.warningForeground: fg-on-accent
+  statusBarItem.warningHoverBackground: warning-hover
+  statusBarItem.warningHoverForeground: fg-on-accent
+  statusBarItem.compactHoverBackground: bg-secondary
+  statusBarItem.focusBorder: bg-primary
+  statusBarItem.offlineBackground: bg-primary
+  statusBarItem.offlineForeground: fg-secondary
+  statusBarItem.offlineHoverForeground: accent
+  statusBarItem.offlineHoverBackground: bg-secondary
+
+  # SYMBOLS
+  symbolIcon.arrayForeground: error
+  symbolIcon.booleanForeground: error
+  symbolIcon.classForeground: info
+  symbolIcon.colorForeground: purple
+  symbolIcon.constantForeground: purple
+  symbolIcon.constructorForeground: success
+  symbolIcon.enumeratorForeground: orange
+  symbolIcon.enumeratorMemberForeground: orange
+  symbolIcon.eventForeground: orange
+  symbolIcon.fieldForeground: orange
+  symbolIcon.fileForeground: cyan
+  symbolIcon.folderForeground: cyan
+  symbolIcon.functionForeground: success
+  symbolIcon.interfaceForeground: info
+  symbolIcon.keyForeground: orange
+  symbolIcon.keywordForeground: error
+  symbolIcon.methodForeground: success
+  symbolIcon.moduleForeground: info
+  symbolIcon.namespaceForeground: info
+  symbolIcon.nullForeground: purple
+  symbolIcon.numberForeground: purple
+  symbolIcon.objectForeground: info
+  symbolIcon.operatorForeground: error
+  symbolIcon.packageForeground: purple
+  symbolIcon.propertyForeground: orange
+  symbolIcon.referenceForeground: purple
+  symbolIcon.snippetForeground: success
+  symbolIcon.stringForeground: warning
+  symbolIcon.structForeground: error
+  symbolIcon.textForeground: warning
+  symbolIcon.typeParameterForeground: orange
+  symbolIcon.unitForeground: purple
+  symbolIcon.variableForeground: info
+
+  # TABS
+  tab.activeBackground: bg-primary
+  tab.unfocusedActiveBackground: bg-primary
+  tab.activeForeground: accent
+  tab.border: bg-primary
+  tab.activeBorder: accent-muted
+  tab.selectedBorderTop: accent
+  tab.selectedBackground: bg-primary
+  tab.selectedForeground: accent
+  tab.dragAndDropBorder: accent
+  tab.unfocusedActiveBorder: accent
+  tab.activeBorderTop: bg-primary
+  tab.unfocusedActiveBorderTop: bg-primary00
+  tab.lastPinnedBorder: accent-transparent
+  tab.inactiveBackground: bg-primary
+  tab.unfocusedInactiveBackground: bg-primary
+  tab.inactiveForeground: fg-muted
+  tab.unfocusedActiveForeground: accent
+  tab.unfocusedInactiveForeground: fg-muted
+  tab.hoverBackground: bg-primary
+  tab.unfocusedHoverBackground: bg-primary
+  tab.hoverForeground: accent
+  tab.unfocusedHoverForeground: accent
+  tab.hoverBorder: bg-primary
+  tab.unfocusedHoverBorder: bg-primary
+  tab.activeModifiedBorder: accent
+  tab.inactiveModifiedBorder: accent-muted
+  tab.unfocusedActiveModifiedBorder: accent-muted
+  tab.unfocusedInactiveModifiedBorder: accent-muted
+
+  # Terminal
+  terminal.background: bg-primary
+  terminal.border: accent-faint
+  terminal.foreground: fg-primary
+  terminal.ansiBlack: fg-on-accent
+  terminal.ansiBlue: info
+  terminal.ansiBrightBlack: fg-on-accent
+  terminal.ansiBrightBlue: info
+  terminal.ansiBrightCyan: cyan
+  terminal.ansiBrightGreen: success
+  terminal.ansiBrightMagenta: purple
+  terminal.ansiBrightRed: error
+  terminal.ansiBrightWhite: fg-primary
+  terminal.ansiBrightYellow: warning
+  terminal.ansiCyan: cyan
+  terminal.ansiGreen: success
+  terminal.ansiMagenta: purple
+  terminal.ansiRed: error
+  terminal.ansiWhite: fg-primary
+  terminal.ansiYellow: warning
+  terminal.selectionBackground: accent-dim
+  terminal.selectionForeground: fg-primary
+  terminal.inactiveSelectionBackground: accent-trace
+  terminal.findMatchBackground: accent-faint
+  terminal.findMatchBorder: accent-transparent
+  terminal.findMatchHighlightBackground: accent-hint
+  terminal.findMatchHighlightBorder: accent-transparent
+  terminal.hoverHighlightBackground: accent-trace
+  terminalCursor.background: bg-primary
+  terminalCursor.foreground: accent
+  terminal.dropBackground: accent-ghost
+  terminal.tab.activeBorder: accent
+  terminalCommandDecoration.defaultBackground: accent-muted
+  terminalCommandDecoration.successBackground: success
+  terminalCommandDecoration.errorBackground: error
+  terminalOverviewRuler.cursorForeground: accent
+  terminalOverviewRuler.findMatchForeground: accent-transparent
+  terminalStickyScroll.background: bg-primary
+  terminalStickyScroll.border: bg-tertiary
+  terminalStickyScrollHover.background: accent-trace
+  terminal.initialHintForeground: fg-muted
+  terminalOverviewRuler.border: bg-primary
+  terminalCommandGuide.foreground: accent-muted
+  terminalSymbolIcon.aliasForeground: purple
+  terminalSymbolIcon.flagForeground: orange
+  terminalSymbolIcon.optionForeground: orange
+  terminalSymbolIcon.optionValueForeground: fg-primary
+  terminalSymbolIcon.methodForeground: success
+  terminalSymbolIcon.argumentForeground: fg-primary
+  terminalSymbolIcon.inlineSuggestionForeground: fg-muted
+  terminalSymbolIcon.fileForeground: cyan
+  terminalSymbolIcon.folderForeground: cyan
+
+  # TESTING
+  testing.coverCountBadgeBackground: accent
+  testing.coverCountBadgeForeground: fg-primary
+  testing.coveredBackground: warning-subtle
+  testing.coveredBorder: warning-subtle
+  testing.coveredGutterBackground: warning-subtle
+  testing.iconErrored: error
+  testing.iconErrored.retired: error-muted
+  testing.iconFailed: error
+  testing.iconFailed.retired: error-muted
+  testing.iconPassed: success
+  testing.iconPassed.retired: success-muted
+  testing.iconQueued: warning
+  testing.iconQueued.retired: warning-muted
+  testing.iconSkipped: fg-muted
+  testing.iconSkipped.retired: fg-muted
+  testing.iconUnset: fg-muted
+  testing.iconUnset.retired: fg-muted
+  testing.message.error.badgeBackground: error
+  testing.message.error.badgeBorder: error
+  testing.message.error.badgeForeground: fg-on-accent
+  testing.message.error.lineBackground: error-faint
+  testing.message.info.decorationForeground: fg-muted
+  testing.message.info.lineBackground: info-faint
+  testing.messagePeekBorder: info
+  testing.messagePeekHeaderBackground: info-ghost
+  testing.peekBorder: error
+  testing.peekHeaderBackground: error-ghost
+  testing.runAction: success
+  testing.uncoveredBackground: error-dim
+  testing.uncoveredBorder: error-dim
+  testing.uncoveredBranchBackground: error-subtle
+  testing.uncoveredGutterBackground: error-hover
+
+  # TEXT COLORS
+  textBlockQuote.background: bg-secondary
+  textBlockQuote.border: bg-tertiary
+  textCodeBlock.background: bg-tertiary
+  textLink.activeForeground: accent
+  textLink.foreground: accent
+  textPreformat.foreground: accent
+  textPreformat.background: bg-tertiary
+  textSeparator.foreground: fg-muted
+
+  # TITLE BAR
+  titleBar.activeBackground: bg-primary
+  titleBar.activeForeground: fg-secondary
+  titleBar.border: bg-primary
+  titleBar.inactiveBackground: bg-primary
+  titleBar.inactiveForeground: fg-muted
+
+  # WELCOME PAGE
+  welcomePage.background: bg-primary
+  welcomePage.progress.background: bg-tertiary
+  welcomePage.progress.foreground: accent
+  welcomePage.tileBackground: bg-secondary
+  welcomePage.tileHoverBackground: bg-tertiary
+  welcomePage.tileBorder: bg-tertiary
+  walkThrough.embeddedEditorBackground: bg-primary
+  walkthrough.stepTitle.foreground: accent
+
+  # WINDOW
+  window.activeBorder: bg-transparent
+  window.inactiveBorder: bg-transparent

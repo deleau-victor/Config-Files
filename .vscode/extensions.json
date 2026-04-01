@@ -15,9 +15,10 @@
         "ms-dotnettools.vscode-dotnet-runtime",
         "ms-dotnettools.csdevkit",
         "ms-dotnettools.csharp",
+        "nightsky-studio.vscode-fluent-ui-continued",
         "PKief.material-icon-theme",
         "redhat.vscode-yaml",
-        "subframe7536.custom-ui-style",
+        "tamasfe.even-better-toml",
         "usernamehw.errorlens",
         "zhuangtongfa.material-theme"
     ]

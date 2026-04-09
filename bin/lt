@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+eza --tree --icons -L "${1:-2}"

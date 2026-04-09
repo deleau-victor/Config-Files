@@ -1,6 +1,9 @@
 {
     "files.associations": {
-    "*.conf": "properties",
-    "zsh.conf": "shellscript"
-  }
+        "*.conf": "properties",
+        "zsh.conf": "shellscript"
+    },
+    "files.exclude": {
+        "**/bin/**": false
+    }
 }

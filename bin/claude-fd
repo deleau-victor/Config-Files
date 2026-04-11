@@ -1,4 +1,3 @@
 #!/bin/sh
 # Wrapper optimisé pour Claude Code
 fd --type f --color=never --hidden --exclude .git "$@"
-EOF

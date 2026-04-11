@@ -129,7 +129,7 @@
     // ************* Terminal Config *************
     // *******************************************
     "terminal.integrated.defaultProfile.windows": "Zsh",
-    "terminal.integrated.fontFamily": "MesloLGS NF",
+    "terminal.integrated.fontFamily": "\"JetBrainsMono Nerd Font\"",
     "terminal.integrated.profiles.windows": {
         "Command Prompt": {
             "path": ["${env:windir}\\Sysnative\\cmd.exe", "${env:windir}\\System32\\cmd.exe"],

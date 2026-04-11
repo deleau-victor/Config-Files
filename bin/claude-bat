@@ -1,0 +1,4 @@
+#!/bin/sh
+# Wrapper optimisé pour Claude Code
+bat --style=plain --color=never --pager=never "$@"
+EOF

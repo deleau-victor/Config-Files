@@ -1,0 +1,27 @@
+#!/usr/bin/env zsh
+
+set -e
+
+git fetch -p
+
+echo "Branches locales marquées comme 'gone' :"
+git branch -vv | awk '/: gone]/{print $1}'
+
+read "answer?Supprimer ces branches ? (o/N) "
+if [[ "$answer" =~ ^[oOyY]$ ]]; then
+  branches=$(git branch -vv | awk '/: gone]/{print $1}')
+  if [ -z "$branches" ]; then
+    echo "Aucune branche 'gone' trouvée."
+  else
+    echo "$branches" | while read -r br; do
+      if git branch -D "$br"; then
+        echo "Supprimée: $br"
+      else
+        echo "Échec suppression: $br"
+      fi
+    done
+    echo "Opération terminée."
+  fi
+else
+  echo "Aucune branche supprimée."
+fi

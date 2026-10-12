@@ -1,7 +1,8 @@
 {
     "files.associations": {
         "*.conf": "properties",
-        "zsh.conf": "shellscript"
+        "zsh.conf": "shellscript",
+        "tmux.conf": "shellscript"
     },
     "files.exclude": {
         "**/bin/**": false

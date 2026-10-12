@@ -54,9 +54,17 @@ Non versionnées, à créer à la main si besoin :
 
 ## Dépendances
 
-`install.sh` signale celles qui manquent : `zsh`, `git`, `tmux`, `eza`, `bat`, `starship`, `zoxide`, `direnv`, `delta`, et [zinit](https://github.com/zdharma-continuum/zinit).
+```bash
+./install-deps.sh           # installe ce qui manque (Fedora / dnf)
+./install-deps.sh --check   # liste seulement (aussi appelé en fin d'install.sh)
+```
 
-Polices : JetBrainsMono Nerd Font.
+| Dépendance                                                      | Installation                                                                                                  |
+| --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| `zsh`, `git`, `tmux`, `eza`, `bat`, `zoxide`, `direnv`, `delta` | `dnf` (`delta` = paquet `git-delta`)                                                                          |
+| `starship`                                                      | installeur officiel → `~/.local/bin` (absent des dépôts Fedora)                                               |
+| [zinit](https://github.com/zdharma-continuum/zinit)             | `git clone` → `~/.local/share/zinit/zinit.git`                                                                |
+| JetBrainsMono Nerd Font                                         | release GitHub → `~/.local/share/fonts` (Linux natif uniquement : sous WSL, installer la police côté Windows) |
 
 ## Templates de projets
 

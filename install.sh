@@ -178,18 +178,7 @@ fi
 
 echo ""
 echo "==> dépendances"
-missing=0
-for cmd in zsh git tmux eza bat starship zoxide direnv delta; do
-    if ! command -v "${cmd}" &>/dev/null; then
-        error "manquant : ${cmd}"
-        missing=$((missing + 1))
-    fi
-done
-if [[ ! -f "${HOME}/.local/share/zinit/zinit.git/zinit.zsh" ]]; then
-    error "manquant : zinit (git clone https://github.com/zdharma-continuum/zinit ~/.local/share/zinit/zinit.git)"
-    missing=$((missing + 1))
-fi
-[[ ${missing} -eq 0 ]] && info "toutes les dépendances sont présentes"
+"${REPO_DIR}/install-deps.sh" --check || warn "installer ce qui manque : ./install-deps.sh"
 
 echo ""
 info "Terminé."

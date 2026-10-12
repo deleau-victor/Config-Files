@@ -1,0 +1,82 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# --- Couleurs ---
+if [[ -t 1 ]]; then
+  BOLD=$'\e[1m'
+  DIM=$'\e[2m'
+  RED=$'\e[31m'
+  GREEN=$'\e[32m'
+  YELLOW=$'\e[33m'
+  BLUE=$'\e[34m'
+  CYAN=$'\e[36m'
+  RESET=$'\e[0m'
+else
+  BOLD="" DIM="" RED="" GREEN="" YELLOW="" BLUE="" CYAN="" RESET=""
+fi
+
+# --- Symboles ---
+CHECK="✓"
+CROSS="✗"
+ARROW="➜"
+BRANCH="󰘬"
+
+PROTECTED_BRANCHES="^(main|master|develop)$"
+
+# --- Header ---
+printf "\n${BOLD}${CYAN}%s Git Branch Cleaner${RESET}\n" "$ARROW"
+printf "${DIM}%s${RESET}\n\n" "Suppression des branches locales orphelines"
+
+# --- Fetch ---
+printf "${BLUE}%s${RESET} Fetching remote...\n" "$ARROW"
+git fetch --prune --quiet
+printf "${GREEN}%s${RESET} Remote synchronisé\n\n" "$CHECK"
+
+# --- Recherche branches gone ---
+mapfile -t gone_branches < <(
+  git for-each-ref --format='%(refname:short) %(upstream:track)' refs/heads \
+  | awk '$2 == "[gone]" {print $1}' \
+  | grep -vE "$PROTECTED_BRANCHES" || true
+)
+
+if [ ${#gone_branches[@]} -eq 0 ]; then
+  printf "${GREEN}%s${RESET} Aucune branche orpheline. Tout est propre.\n\n" "$CHECK"
+  exit 0
+fi
+
+# --- Liste ---
+printf "${BOLD}${YELLOW}%s Branches orphelines trouvées (%d) :${RESET}\n\n" "$BRANCH" "${#gone_branches[@]}"
+for branch in "${gone_branches[@]}"; do
+  printf "  ${DIM}•${RESET} ${YELLOW}%s${RESET}\n" "$branch"
+done
+echo
+
+# --- Confirmation ---
+printf "${BOLD}Supprimer ces branches ?${RESET} ${DIM}[y/N]${RESET} "
+read -r answer
+echo
+
+if [[ ! "$answer" =~ ^[Yy]$ ]]; then
+  printf "${DIM}Opération annulée.${RESET}\n\n"
+  exit 0
+fi
+
+# --- Suppression ---
+deleted=0
+failed=0
+for branch in "${gone_branches[@]}"; do
+  if git branch -D "$branch" &>/dev/null; then
+    printf "  ${GREEN}%s${RESET} %s\n" "$CHECK" "$branch"
+    deleted=$((deleted + 1))
+  else
+    printf "  ${RED}%s${RESET} %s ${DIM}(échec)${RESET}\n" "$CROSS" "$branch"
+    failed=$((failed + 1))
+  fi
+done
+
+# --- Résumé ---
+echo
+printf "${BOLD}Résumé :${RESET} "
+printf "${GREEN}%d supprimée(s)${RESET}" "$deleted"
+[ "$failed" -gt 0 ] && printf " • ${RED}%d échec(s)${RESET}" "$failed"
+printf "\n\n"

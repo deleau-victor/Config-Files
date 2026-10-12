@@ -17,6 +17,15 @@ info()  { echo -e "${GREEN}[+]${NC} $*"; }
 warn()  { echo -e "${YELLOW}[~]${NC} $*"; }
 error() { echo -e "${RED}[!]${NC} $*"; }
 
+backup() {
+    local target="$1" sudo_cmd="${2:-}"
+    if [[ -e "${target}" && ! -L "${target}" ]]; then
+        local bak="${target}.bak.$(date +%Y%m%d-%H%M%S)"
+        ${sudo_cmd} mv "${target}" "${bak}"
+        warn "sauvegarde : ${target} → ${bak}"
+    fi
+}
+
 # ── bin/ → ~/.local/bin ──────────────────────────────────────────────────────
 
 echo ""
@@ -27,6 +36,7 @@ for file in "${BIN_DIR}"/*; do
     [[ -f "${file}" ]] || continue
     name="$(basename "${file}")"
     target="${LOCAL_BIN}/${name}"
+    backup "${target}"
     ln -sf "${file}" "${target}"
     info "bin: ${name} → ${target}"
 done
@@ -69,8 +79,10 @@ for file in "${DOTFILES_DIR}"/*; do
 
     # Chemins système : utiliser sudo
     if [[ "${target}" != "${HOME}"* ]]; then
+        backup "${target}" sudo
         sudo ln -sf "${file}" "${target}"
     else
+        backup "${target}"
         ln -sf "${file}" "${target}"
     fi
     info "dotfiles: ${name} → ${target}"

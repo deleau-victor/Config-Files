@@ -1,0 +1,69 @@
+#!/usr/bin/env bash
+# init-project — Copie les fichiers de templates/ dans le dossier courant
+# Usage : init-project [-f] <dotnet|web>...
+#   common/ est toujours copié ; -f écrase les fichiers existants
+set -euo pipefail
+
+TEMPLATES_DIR="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")/../templates" && pwd)"
+
+if [[ -t 1 ]]; then
+  GREEN=$'\e[32m' YELLOW=$'\e[33m' RED=$'\e[31m' DIM=$'\e[2m' RESET=$'\e[0m'
+else
+  GREEN="" YELLOW="" RED="" DIM="" RESET=""
+fi
+
+usage() {
+  local profiles
+  profiles="$(find "${TEMPLATES_DIR}" -mindepth 1 -maxdepth 1 -type d ! -name common -printf '%f|' | sed 's/|$//')"
+  printf "Usage : init-project [-f] <%s>...\n" "${profiles}"
+  exit 1
+}
+
+force=false
+if [[ "${1:-}" == "-f" ]]; then
+  force=true
+  shift
+fi
+[[ $# -eq 0 ]] && usage
+
+for profile in "$@"; do
+  [[ -d "${TEMPLATES_DIR}/${profile}" ]] || { printf "${RED}✗${RESET} profil inconnu : %s\n" "${profile}"; usage; }
+done
+
+skip_existing() {
+  if [[ -e "$1" && "${force}" == false ]]; then
+    printf "  ${YELLOW}~${RESET} %s ${DIM}(existe déjà, -f pour écraser)${RESET}\n" "$1"
+    return 0
+  fi
+  return 1
+}
+
+# Fichiers fusionnés : les fragments de chaque profil sont concaténés dans l'ordre
+MERGED=(.editorconfig)
+
+for name in "${MERGED[@]}"; do
+  skip_existing "${name}" && continue
+  sources=()
+  for profile in common "$@"; do
+    [[ -f "${TEMPLATES_DIR}/${profile}/${name}" ]] && sources+=("${profile}")
+  done
+  [[ ${#sources[@]} -eq 0 ]] && continue
+  : > "${name}"
+  for profile in "${sources[@]}"; do
+    cat "${TEMPLATES_DIR}/${profile}/${name}" >> "${name}"
+    echo >> "${name}"
+  done
+  printf "  ${GREEN}✓${RESET} %s ${DIM}(%s)${RESET}\n" "${name}" "$(IFS=+; echo "${sources[*]}")"
+done
+
+# Autres fichiers : copiés tels quels
+for profile in common "$@"; do
+  for src in "${TEMPLATES_DIR}/${profile}"/.[!.]* "${TEMPLATES_DIR}/${profile}"/*; do
+    [[ -f "${src}" ]] || continue
+    name="$(basename "${src}")"
+    [[ " ${MERGED[*]} " == *" ${name} "* ]] && continue
+    skip_existing "${name}" && continue
+    cp "${src}" "${name}"
+    printf "  ${GREEN}✓${RESET} %s ${DIM}(%s)${RESET}\n" "${name}" "${profile}"
+  done
+done

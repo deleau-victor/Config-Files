@@ -1,0 +1,20 @@
+##################################################
+################## WEB SETTINGS ##################
+##################################################
+# Aligné sur .prettierrc (Prettier lit aussi ce fichier)
+[*.{js,jsx,mjs,cjs,ts,tsx,mts,cts,vue,svelte,css,scss,less,html,json,jsonc}]
+indent_size = 4
+max_line_length = 120
+quote_type = double
+
+# Réécrits par npm/pnpm/yarn en 2 espaces : éviter les diffs inutiles
+[{package.json,package-lock.json,pnpm-lock.yaml,.yarnrc.yml}]
+indent_size = 2
+
+# Fichiers générés : ne pas toucher
+[*.{min.js,min.css,map}]
+trim_trailing_whitespace = false
+insert_final_newline = false
+
+[*.snap]
+trim_trailing_whitespace = false

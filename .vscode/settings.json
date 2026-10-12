@@ -1,11 +1,13 @@
 {
-    "files.associations": {
-        "*.conf": "properties",
-        "zsh.conf": "shellscript",
-        "tmux.conf": "shellscript",
-        "kube.conf": "yaml"
-    },
-    "files.exclude": {
-        "**/bin/**": false
-    }
+  "files.associations": {
+    "*.conf": "properties",
+    "zsh.conf": "shellscript",
+    "tmux.conf": "shellscript",
+    "vscode.fedora-native.conf": "jsonc",
+    "vscode.fedora-wsl.conf": "jsonc",
+    "kube.conf": "yaml"
+  },
+  "files.exclude": {
+    "**/bin/**": false
+  }
 }

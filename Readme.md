@@ -10,12 +10,12 @@ Le script est idempotent : il peut être relancé à chaque mise à jour du repo
 
 ## Structure
 
-| Dossier      | Rôle                                                                         |
-| ------------ | ---------------------------------------------------------------------------- |
-| `bin/`       | Scripts liés dans `~/.local/bin`                                             |
-| `dotfiles/`  | Fichiers de config liés vers la cible indiquée dans leur en-tête             |
-| `extension/` | Icônes custom de material-icon-theme (→ `~/.vscode/extensions/custom-icons`) |
-| `templates/` | Fichiers de démarrage de projets, copiés par `init-project`                  |
+| Dossier      | Rôle                                                                                                                                   |
+| ------------ | -------------------------------------------------------------------------------------------------------------------------------------- |
+| `bin/`       | Scripts liés dans `~/.local/bin`                                                                                                       |
+| `dotfiles/`  | Fichiers de config liés vers la cible indiquée dans leur en-tête                                                                       |
+| `extension/` | Icônes custom de material-icon-theme (→ `~/.vscode/extensions/custom-icons`, copiées dans `%USERPROFILE%\.vscode\extensions` sous WSL) |
+| `templates/` | Fichiers de démarrage de projets, copiés par `init-project`                                                                            |
 
 ## En-têtes des dotfiles
 
@@ -26,12 +26,15 @@ Chaque fichier de `dotfiles/` commence par un en-tête (`#` ou `//`) lu par `ins
 # TARGET   : ~/.zshrc                                     (obligatoire : destination du symlink)
 # DESC     : Configuration ZSH                            (informatif)
 # OS       : fedora                                       (optionnel : liste d'OS séparés par des espaces)
+# MODE     : copy                                         (optionnel : copie au lieu d'un symlink)
 # WARN     : Ne pas monter ce fichier en symlink          (optionnel : fichier ignoré par install.sh)
 ```
 
+- **TARGET** : `~` est remplacé par `$HOME` ; sous WSL, les variables Windows `%VAR%` (`%APPDATA%`, `%USERPROFILE%`...) sont résolues en chemin `/mnt/c/...`.
 - **OS** : `wsl` sous WSL, sinon l'`ID` de `/etc/os-release` (`fedora`, `ubuntu`...). Sans ce champ, le fichier est installé partout.
 - **WARN** : pour les fichiers système qui doivent être copiés à la main (GRUB, rEFInd).
-- Une cible hors de `$HOME` est liée avec `sudo`.
+- **MODE : copy** : pour les cibles lues par Windows (`/mnt/c/...`), qui ne sait pas suivre un symlink WSL. La copie n'est faite que si le contenu diffère ; une modification faite côté Windows est sauvegardée en `.bak` puis remplacée.
+- `sudo` n'est utilisé que si le dossier cible n'est pas inscriptible (`/etc/...`).
 - Un fichier existant (non symlink) est sauvegardé en `<cible>.bak.<date>` avant d'être remplacé.
 
 ## Surcharges par machine

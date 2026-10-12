@@ -42,6 +42,17 @@ detect_os() {
     fi
 }
 
+# Variable d'environnement Windows (ex. APPDATA) convertie en chemin WSL (/mnt/c/...)
+# Vide si indisponible (hors WSL ou variable inexistante)
+win_var() {
+    local value
+    value="$(cd /mnt/c && cmd.exe /c "echo %$1%" 2>/dev/null | tr -d '\r')" || return 0
+    if [[ -n "${value}" && "${value}" != "%$1%" ]]; then
+        wslpath -u "${value}"
+    fi
+    return 0
+}
+
 CURRENT_OS="$(detect_os)"
 info "OS détecté : ${CURRENT_OS}"
 
@@ -91,42 +102,76 @@ for file in "${DOTFILES_DIR}"/*; do
     # Remplacer le ~ initial par $HOME
     target="${target_raw/#\~/${HOME}}"
 
-    # Créer le répertoire parent si nécessaire
-    parent="$(dirname "${target}")"
-    if [[ ! -d "${parent}" ]]; then
-        if [[ "${target}" != "${HOME}"* ]]; then
-            sudo mkdir -p "${parent}"
-        else
-            mkdir -p "${parent}"
+    # Remplacer les variables Windows %VAR% (WSL uniquement)
+    while [[ "${target}" =~ %([A-Za-z_][A-Za-z0-9_]*)% ]]; do
+        var="${BASH_REMATCH[1]}"
+        value="$(win_var "${var}")"
+        if [[ -z "${value}" ]]; then
+            error "dotfiles: ${name} — variable Windows %${var}% introuvable, ignoré"
+            continue 2
         fi
+        target="${target//%${var}%/${value}}"
+    done
+
+    # sudo seulement si le premier dossier existant de la cible n'est pas inscriptible
+    parent="$(dirname "${target}")"
+    existing="${parent}"
+    while [[ ! -d "${existing}" ]]; do existing="$(dirname "${existing}")"; done
+    sudo_cmd=""
+    [[ -w "${existing}" ]] || sudo_cmd="sudo"
+
+    [[ -d "${parent}" ]] || ${sudo_cmd} mkdir -p "${parent}"
+
+    # MODE : copy → copie au lieu d'un symlink (ex. fichiers lus depuis Windows,
+    # qui ne sait pas suivre un symlink WSL pointant vers le système de fichiers Linux)
+    if [[ "$(header "${file}" MODE)" == "copy" ]]; then
+        [[ -L "${target}" ]] && ${sudo_cmd} rm "${target}"
+        if [[ -f "${target}" ]] && cmp -s "${file}" "${target}"; then
+            info "dotfiles: ${name} → ${target} (copie déjà à jour)"
+            continue
+        fi
+        backup "${target}" ${sudo_cmd}
+        ${sudo_cmd} cp "${file}" "${target}"
+        info "dotfiles: ${name} → ${target} (copie)"
+        continue
     fi
 
-    # Chemins système : utiliser sudo
-    if [[ "${target}" != "${HOME}"* ]]; then
-        backup "${target}" sudo
-        sudo ln -sf "${file}" "${target}"
-    else
-        backup "${target}"
-        ln -sf "${file}" "${target}"
-    fi
+    backup "${target}" ${sudo_cmd}
+    ${sudo_cmd} ln -sf "${file}" "${target}"
     info "dotfiles: ${name} → ${target}"
 done
 
-# ── extension/custom-icons → ~/.vscode/extensions/custom-icons ──────────────
+# ── extension/custom-icons → <extensions VS Code>/custom-icons ───────────────
 # Chemin attendu par les associations « ../../custom-icons/... » de material-icon-theme.
-# Sous WSL, les extensions UI vivent côté Windows : non géré ici.
+# Sous WSL, les extensions UI vivent côté Windows : copie (Windows ne suit pas
+# les symlinks WSL), sinon symlink.
 
 echo ""
 echo "==> extension/"
-VSCODE_EXT_DIR="${HOME}/.vscode/extensions"
+ICONS_SRC="${REPO_DIR}/extension/custom-icons"
 if [[ "${CURRENT_OS}" == "wsl" ]]; then
-    warn "extension: ignoré sous WSL (copier extension/custom-icons dans %USERPROFILE%/.vscode/extensions/)"
-elif [[ -d "${VSCODE_EXT_DIR}" ]]; then
-    backup "${VSCODE_EXT_DIR}/custom-icons"
-    ln -sfn "${REPO_DIR}/extension/custom-icons" "${VSCODE_EXT_DIR}/custom-icons"
-    info "extension: custom-icons → ${VSCODE_EXT_DIR}/custom-icons"
+    win_profile="$(win_var USERPROFILE)"
+    VSCODE_EXT_DIR="${win_profile:+${win_profile}/.vscode/extensions}"
 else
-    warn "extension: ${VSCODE_EXT_DIR} absent, VS Code non installé ?"
+    VSCODE_EXT_DIR="${HOME}/.vscode/extensions"
+fi
+ICONS_DST="${VSCODE_EXT_DIR}/custom-icons"
+
+if [[ -z "${VSCODE_EXT_DIR}" || ! -d "${VSCODE_EXT_DIR}" ]]; then
+    warn "extension: dossier des extensions VS Code introuvable (${VSCODE_EXT_DIR:-profil Windows non détecté}), VS Code non installé ?"
+elif [[ "${CURRENT_OS}" == "wsl" ]]; then
+    [[ -L "${ICONS_DST}" ]] && rm "${ICONS_DST}"
+    if [[ -d "${ICONS_DST}" ]] && diff -rq "${ICONS_SRC}" "${ICONS_DST}" &>/dev/null; then
+        info "extension: custom-icons → ${ICONS_DST} (copie déjà à jour)"
+    else
+        backup "${ICONS_DST}"
+        cp -r "${ICONS_SRC}" "${ICONS_DST}"
+        info "extension: custom-icons → ${ICONS_DST} (copie)"
+    fi
+else
+    backup "${ICONS_DST}"
+    ln -sfn "${ICONS_SRC}" "${ICONS_DST}"
+    info "extension: custom-icons → ${ICONS_DST}"
 fi
 
 # ── Dépendances ──────────────────────────────────────────────────────────────

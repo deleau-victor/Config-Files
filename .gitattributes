@@ -1,0 +1,48 @@
+###############################################################################
+# Normalisation : LF partout, détection automatique texte/binaire
+###############################################################################
+* text=auto eol=lf
+
+###############################################################################
+# Exceptions Windows
+###############################################################################
+*.bat   text eol=crlf
+*.cmd   text eol=crlf
+
+###############################################################################
+# Binaires (filet de sécurité en plus de la détection auto)
+###############################################################################
+*.png    binary
+*.jpg    binary
+*.jpeg   binary
+*.gif    binary
+*.webp   binary
+*.ico    binary
+*.bmp    binary
+*.ttf    binary
+*.otf    binary
+*.woff   binary
+*.woff2  binary
+*.zip    binary
+*.7z     binary
+*.gz     binary
+*.nupkg  binary
+*.exe    binary
+*.dll    binary
+*.so     binary
+*.dylib  binary
+*.pdb    binary
+*.snk    binary
+*.pfx    binary
+*.mp4    binary
+*.mov    binary
+*.pdf    binary
+
+###############################################################################
+# Drivers de diff intégrés à Git (meilleurs en-têtes de hunks)
+###############################################################################
+*.cs    diff=csharp
+*.sh    diff=bash
+*.md    diff=markdown
+*.html  diff=html
+*.css   diff=css
